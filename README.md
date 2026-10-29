@@ -43,3 +43,6 @@ The mouse wheel now zooms around the cursor. Drag empty canvas to pan, or use Sh
 
 ## v4
 Board renaming now edits the name directly in the sidebar. Enter or clicking elsewhere saves; Escape cancels. Dark surfaces are near-black.
+
+## v5 — Live card editing
+Double-click a card or click its three-dot button to edit its title and notes directly on the canvas. Changes save as you type. Click Done, press Escape or click outside to finish. Checklist text uses one item per line while editing. Colors, duplicate and delete controls are inside the card. Card shadows and grid contrast are stronger in both themes.

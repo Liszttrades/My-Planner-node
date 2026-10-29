@@ -14,7 +14,31 @@ function applyView(){let v=board().view;$('#world').style.transform=`translate($
 function point(x,y){let r=$('#canvas').getBoundingClientRect(),v=board().view;return{x:(x-r.left-v.x)/v.z,y:(y-r.top-v.y)/v.z}}
 function center(){let r=$('#canvas').getBoundingClientRect();return point(r.left+r.width/2-100,r.top+r.height/2-40)}
 function add(type,pos=center(),data={}){remember();let n={id:uid(),type,title:type==='checklist'?'Checklist':'Untitled note',body:type==='checklist'?'First task':'',color:type==='note'?'sand':'white',x:pos.x,y:pos.y,w:260,...data};board().nodes.push(n);selected=n.id;render();save();if(type!=='image')edit(n.id)}
-function edit(id){editing=id;let n=board().nodes.find(n=>n.id===id);if(!n)return;$('#editKind').textContent='EDIT '+n.type.toUpperCase();$('#editTitle').value=n.title;$('#editBody').value=n.body||'';$('#bodyLabel').hidden=n.type==='image';$('#editBody').placeholder=n.type==='checklist'?'One step per line':'Write a note…';$('#colors').innerHTML=Object.entries(palette).map(([k,v])=>`<button type="button" class="swatch ${n.color===k?'chosen':''}" data-color="${k}" style="background:${v}" title="${k}" aria-label="${k}"></button>`).join('');$('#editor').showModal()}
+let liveEdit=null;
+function finishLive(){if(!liveEdit)return;liveEdit=null;save();render()}
+function edit(id){
+ if(liveEdit===id)return;
+ if(liveEdit)finishLive();
+ let n=board().nodes.find(n=>n.id===id),el=document.querySelector(`[data-id="${id}"]`);if(!n||!el)return;
+ remember();liveEdit=id;selected=id;el.classList.add('editing','selected');
+ let title=el.querySelector('h2');title.contentEditable='plaintext-only';title.setAttribute('aria-label','Card title');title.setAttribute('data-placeholder','Untitled note');
+ title.oninput=()=>{n.title=title.innerText.trim().slice(0,150);save();requestAnimationFrame(drawEdges)};
+ title.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();el.querySelector('.live-body')?.focus()}};
+ if(n.type!=='image'){
+ let body=document.createElement('div');body.className='live-body';body.contentEditable='plaintext-only';body.setAttribute('role','textbox');body.setAttribute('aria-label',n.type==='checklist'?'Checklist items, one per line':'Card notes');body.setAttribute('aria-multiline','true');body.setAttribute('data-placeholder',n.type==='checklist'?'One task per line':'Write a note…');body.innerText=n.body||'';
+ el.querySelector('.node-content').replaceChildren(title,body);
+ body.oninput=()=>{n.body=body.innerText;save();requestAnimationFrame(drawEdges)};
+ }
+ let controls=document.createElement('div');controls.className='live-controls';controls.innerHTML=`<div class="live-colors">${Object.entries(palette).map(([k,v])=>`<button class="swatch ${n.color===k?'chosen':''}" data-live-color="${k}" style="background:${v}" aria-label="${k}" title="${k}"></button>`).join('')}</div><div class="live-actions"><button data-live-action="duplicate" title="Duplicate card">Duplicate</button><button data-live-action="delete" class="danger">Delete</button><button data-live-action="done">Done ✓</button></div>`;
+ el.append(controls);
+ controls.onclick=e=>{e.stopPropagation();let color=e.target.closest('[data-live-color]')?.dataset.liveColor,action=e.target.closest('[data-live-action]')?.dataset.liveAction;
+ if(color){n.color=color;el.style.background=palette[color];el.dataset.color=color;el.style.setProperty('--note-ink',noteInk(palette[color]));controls.querySelector('.chosen')?.classList.remove('chosen');e.target.classList.add('chosen');save()}
+ if(action==='done')finishLive();
+ if(action==='delete'){liveEdit=null;removeNode(id)}
+ if(action==='duplicate'){let copy=structuredClone(n);copy.id=uid();copy.x+=40;copy.y+=40;board().nodes.push(copy);finishLive()}
+ };
+ title.focus();let range=document.createRange();range.selectNodeContents(title);let selection=getSelection();selection.removeAllRanges();selection.addRange(range);requestAnimationFrame(drawEdges);
+}
 $('#colors').onclick=e=>{let b=e.target.closest('[data-color]');if(b){$('#colors .chosen')?.classList.remove('chosen');b.classList.add('chosen')}};
 $('#editForm').onsubmit=e=>{e.preventDefault();remember();let n=board().nodes.find(n=>n.id===editing);n.title=$('#editTitle').value.trim()||'Untitled note';n.body=$('#editBody').value;n.color=$('#colors .chosen')?.dataset.color||'white';pulseNode=editing;$('#editor').close();render();save()};$('#closeEditor').onclick=()=>$('#editor').close();
 function removeNode(id){remember();let b=board();b.nodes=b.nodes.filter(n=>n.id!==id);b.edges=b.edges.filter(e=>e.from!==id&&e.to!==id);selected=null;render();save();toast('Card removed · Ctrl/⌘ Z to undo')}
@@ -22,11 +46,11 @@ $('#deleteNode').onclick=()=>{removeNode(editing);$('#editor').close()};$('#dupl
 function connect(id){if(!source){source=id;selected=id;$('#connectHint').hidden=false;document.body.classList.add('connecting');render()}else if(source!==id){remember();if(!board().edges.some(e=>e.from===source&&e.to===id))board().edges.push({id:uid(),from:source,to:id});cancelConnect();render();save()}}
 function cancelConnect(){$('#draftEdge')?.remove();source=null;mode='select';$('#connectHint').hidden=true;document.body.classList.remove('connecting');$('#connect').classList.remove('active')}
 $('#cancelConnect').onclick=cancelConnect;$('#connect').onclick=()=>{mode=mode==='connect'?'select':'connect';$('#connect').classList.toggle('active',mode==='connect');if(mode==='connect'){toast('Click a starting card, then a destination');document.body.classList.add('connecting')}else cancelConnect()};$('#pan').onclick=()=>{mode=mode==='pan'?'select':'pan';$('#pan').classList.toggle('active',mode==='pan')};
-$('#nodes').onclick=e=>{let n=e.target.closest('.node');if(!n)return;let id=n.dataset.id;if(e.target.closest('[data-edit]'))return edit(id);if(e.target.closest('[data-port]')||mode==='connect'||source)return connect(id);if(e.target.matches('[data-check]')){remember();let node=board().nodes.find(n=>n.id===id);node.checks||=[];node.checks[+e.target.dataset.check]=e.target.checked;render();save()}};
-$('#nodes').ondblclick=e=>{if(!e.target.matches('input,button'))edit(e.target.closest('.node').dataset.id)};
+$('#nodes').onclick=e=>{let n=e.target.closest('.node');if(!n)return;let id=n.dataset.id;if(e.target.closest('[contenteditable],.live-controls'))return;if(e.target.closest('[data-edit]'))return edit(id);if(e.target.closest('[data-port]')||mode==='connect'||source)return connect(id);if(e.target.matches('[data-check]')){remember();let node=board().nodes.find(n=>n.id===id);node.checks||=[];node.checks[+e.target.dataset.check]=e.target.checked;render();save()}};
+$('#nodes').ondblclick=e=>{if(!e.target.closest('input,button,[contenteditable],.live-controls'))edit(e.target.closest('.node').dataset.id)};
 $('#edges').onclick=e=>{if(e.target.dataset.edge){remember();board().edges=board().edges.filter(x=>x.id!==e.target.dataset.edge);render();save();toast('Connection removed · Ctrl/⌘ Z to undo')}};
 let drag=null;
-$('#canvas').onpointerdown=e=>{if(e.button!==0||e.target.closest('button,input,header,.toolbar,.canvas-bottom,.board-heading,.edge'))return;let el=e.target.closest('.node');if((source||mode==='connect')&&el)return;let p=point(e.clientX,e.clientY);if(el&&!space&&mode!=='pan'){selected=el.dataset.id;let n=board().nodes.find(n=>n.id===selected);drag={type:e.target.closest('.resize')?'resize':'node',id:n.id,sx:e.clientX,sy:e.clientY,x:n.x,y:n.y,w:n.w,moved:false};document.querySelectorAll('.node').forEach(x=>x.classList.toggle('selected',x===el))}else{selected=null;drag={type:'pan',sx:e.clientX,sy:e.clientY,x:board().view.x,y:board().view.y,moved:false}}};
+$('#canvas').onpointerdown=e=>{if(e.button!==0||e.target.closest('[contenteditable],.live-controls,button,input,header,.toolbar,.canvas-bottom,.board-heading,.edge'))return;let el=e.target.closest('.node');if((source||mode==='connect')&&el)return;let p=point(e.clientX,e.clientY);if(el&&!space&&mode!=='pan'){selected=el.dataset.id;let n=board().nodes.find(n=>n.id===selected);drag={type:e.target.closest('.resize')?'resize':'node',id:n.id,sx:e.clientX,sy:e.clientY,x:n.x,y:n.y,w:n.w,moved:false};document.querySelectorAll('.node').forEach(x=>x.classList.toggle('selected',x===el))}else{selected=null;drag={type:'pan',sx:e.clientX,sy:e.clientY,x:board().view.x,y:board().view.y,moved:false}}};
 $('#canvas').onpointermove=e=>{if(source)previewConnection(e);if(!drag)return;let dx=e.clientX-drag.sx,dy=e.clientY-drag.sy;if(!drag.moved&&Math.hypot(dx,dy)>3){remember();drag.moved=true;$('#canvas').classList.add('is-dragging');if(drag.id)document.querySelector(`[data-id="${drag.id}"]`)?.classList.add('dragging');$('#canvas').setPointerCapture(e.pointerId)}if(!drag.moved)return;if(drag.type==='pan'){board().view.x=drag.x+dx;board().view.y=drag.y+dy;applyView()}else{let n=board().nodes.find(n=>n.id===drag.id),el=document.querySelector(`[data-id="${n.id}"]`);if(drag.type==='resize'){n.w=Math.max(180,Math.min(700,drag.w+dx/board().view.z));el.style.width=n.w+'px'}else{n.x=drag.x+dx/board().view.z;n.y=drag.y+dy/board().view.z;el.style.left=n.x+'px';el.style.top=n.y+'px'}drawEdges()}};
 function endDrag(){if(drag?.moved){save();let el=drag.id&&document.querySelector(`[data-id="${drag.id}"]`);motion(el,[{transform:'scale(1.015)'},{transform:'scale(1)'}],{duration:240});}document.querySelector('.dragging')?.classList.remove('dragging');$('#canvas').classList.remove('is-dragging');drag=null}$('#canvas').onpointerup=endDrag;$('#canvas').onpointercancel=endDrag;
 $('#canvas').ondblclick=e=>{if(e.target===$('#canvas')||e.target===$('#world'))add('note',point(e.clientX,e.clientY))};
@@ -68,3 +92,6 @@ function renameBoardInline(id){
  function finish(cancel=false){if(done)return;done=true;let title=input.value.trim();if(!cancel&&title&&title!==b.title){remember();b.title=title;save()}render()}
  input.addEventListener('click',e=>e.stopPropagation());input.addEventListener('pointerdown',e=>e.stopPropagation());input.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Enter'){e.preventDefault();finish()}if(e.key==='Escape'){e.preventDefault();finish(true)}});input.addEventListener('blur',()=>finish());input.focus();input.select();
 }
+
+let closeLiveAfterClick=null;document.addEventListener('pointerdown',e=>{closeLiveAfterClick=liveEdit&&!e.target.closest(`[data-id="${liveEdit}"]`)?liveEdit:null});document.addEventListener('click',()=>{if(closeLiveAfterClick&&liveEdit===closeLiveAfterClick)finishLive();closeLiveAfterClick=null});
+document.addEventListener('keydown',e=>{if(liveEdit&&e.key==='Escape'){e.preventDefault();finishLive()}});
