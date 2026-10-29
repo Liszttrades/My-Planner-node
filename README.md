@@ -49,3 +49,6 @@ Double-click a card or click its three-dot button to edit its title and notes di
 
 ## v6 — Readability
 Card body and checklist text is 17px at 100% canvas zoom; titles are 20px. UI text sizes have increased. New cards start at 320px wide; existing card positions and widths are preserved. The inline color picker is now a compact dropdown with a color preview.
+
+## v7 — Side palette
+Click Color while editing a card to open a floating swatch palette beside it. The panel prefers the right side and switches left near the screen edge. Colors update live without enlarging the card. Click its close button or finish editing to dismiss it.

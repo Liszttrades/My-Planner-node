@@ -15,7 +15,7 @@ function point(x,y){let r=$('#canvas').getBoundingClientRect(),v=board().view;re
 function center(){let r=$('#canvas').getBoundingClientRect();return point(r.left+r.width/2-100,r.top+r.height/2-40)}
 function add(type,pos=center(),data={}){remember();let n={id:uid(),type,title:type==='checklist'?'Checklist':'Untitled note',body:type==='checklist'?'First task':'',color:type==='note'?'sand':'white',x:pos.x,y:pos.y,w:320,...data};board().nodes.push(n);selected=n.id;render();save();if(type!=='image')edit(n.id)}
 let liveEdit=null;
-function finishLive(){if(!liveEdit)return;liveEdit=null;save();render()}
+function finishLive(){closePalette();if(!liveEdit)return;liveEdit=null;save();render()}
 function edit(id){
  if(liveEdit===id)return;
  if(liveEdit)finishLive();
@@ -29,12 +29,13 @@ function edit(id){
  el.querySelector('.node-content').replaceChildren(title,body);
  body.oninput=()=>{n.body=body.innerText;save();requestAnimationFrame(drawEdges)};
  }
- let controls=document.createElement('div');controls.className='live-controls';controls.innerHTML=`<div class="color-field"><span class="current-color" style="background:${palette[n.color]}"></span><select aria-label="Card color" class="card-color-select">${Object.entries(palette).map(([k,v])=>`<option value="${k}" ${n.color===k?'selected':''}>${k.charAt(0).toUpperCase()+k.slice(1)}</option>`).join('')}</select></div><div class="live-actions"><button data-live-action="duplicate" title="Duplicate card">Duplicate</button><button data-live-action="delete" class="danger">Delete</button><button data-live-action="done">Done ✓</button></div>`;
- el.append(controls);controls.querySelector('select').onchange=e=>{let color=e.target.value;n.color=color;el.style.background=palette[color];el.dataset.color=color;el.style.setProperty('--note-ink',noteInk(palette[color]));controls.querySelector('.current-color').style.background=palette[color];save()};
+ let controls=document.createElement('div');controls.className='live-controls';controls.innerHTML=`<div class="live-actions"><button data-live-action="color" class="color-trigger" aria-label="Choose card color" aria-expanded="false"><span class="current-color" style="background:${palette[n.color]}"></span> Color</button><button data-live-action="duplicate" title="Duplicate card">Duplicate</button><button data-live-action="delete" class="danger">Delete</button><button data-live-action="done">Done ✓</button></div>`;
+ el.append(controls);
  controls.onclick=e=>{e.stopPropagation();let color=e.target.closest('[data-live-color]')?.dataset.liveColor,action=e.target.closest('[data-live-action]')?.dataset.liveAction;
 
+ if(action==='color'){if(document.querySelector('#sidePalette'))closePalette();else openPalette(n,el,e.target.closest('button'))}
  if(action==='done')finishLive();
- if(action==='delete'){liveEdit=null;removeNode(id)}
+ if(action==='delete'){closePalette();liveEdit=null;removeNode(id)}
  if(action==='duplicate'){let copy=structuredClone(n);copy.id=uid();copy.x+=40;copy.y+=40;board().nodes.push(copy);finishLive()}
  };
  title.focus();let range=document.createRange();range.selectNodeContents(title);let selection=getSelection();selection.removeAllRanges();selection.addRange(range);requestAnimationFrame(drawEdges);
@@ -93,5 +94,16 @@ function renameBoardInline(id){
  input.addEventListener('click',e=>e.stopPropagation());input.addEventListener('pointerdown',e=>e.stopPropagation());input.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Enter'){e.preventDefault();finish()}if(e.key==='Escape'){e.preventDefault();finish(true)}});input.addEventListener('blur',()=>finish());input.focus();input.select();
 }
 
-let closeLiveAfterClick=null;document.addEventListener('pointerdown',e=>{closeLiveAfterClick=liveEdit&&!e.target.closest(`[data-id="${liveEdit}"]`)?liveEdit:null});document.addEventListener('click',()=>{if(closeLiveAfterClick&&liveEdit===closeLiveAfterClick)finishLive();closeLiveAfterClick=null});
+let closeLiveAfterClick=null;document.addEventListener('pointerdown',e=>{closeLiveAfterClick=liveEdit&&!e.target.closest(`[data-id="${liveEdit}"],#sidePalette`)?liveEdit:null});document.addEventListener('click',()=>{if(closeLiveAfterClick&&liveEdit===closeLiveAfterClick)finishLive();closeLiveAfterClick=null});
 document.addEventListener('keydown',e=>{if(liveEdit&&e.key==='Escape'){e.preventDefault();finishLive()}});
+
+let paletteFrame=null;
+function closePalette(){document.querySelector('#sidePalette')?.remove();cancelAnimationFrame(paletteFrame);document.querySelector('.color-trigger')?.setAttribute('aria-expanded','false')}
+function openPalette(n,card,trigger){
+ const panel=document.createElement('div');panel.id='sidePalette';panel.setAttribute('role','dialog');panel.setAttribute('aria-label','Card colors');
+ panel.innerHTML=`<div class="palette-heading"><span>Card color</span><button aria-label="Close colors" class="palette-close">×</button></div><div class="palette-grid">${Object.entries(palette).map(([key,color])=>`<button data-palette-color="${key}" class="palette-swatch ${key===n.color?'chosen':''}" style="--swatch:${color}" aria-label="${key}" aria-pressed="${key===n.color}" title="${key}"><span>${key===n.color?'✓':''}</span></button>`).join('')}</div><div class="palette-value">${esc(n.color)} <span>${palette[n.color]}</span></div>`;
+ document.body.append(panel);trigger.setAttribute('aria-expanded','true');
+ function place(){if(!card.isConnected){closePalette();return}let r=card.getBoundingClientRect(),w=panel.offsetWidth,h=panel.offsetHeight;let x=r.right+14;if(x+w>innerWidth-12)x=r.left-w-14;if(x<12)x=Math.max(12,Math.min(innerWidth-w-12,r.left));panel.style.left=x+'px';panel.style.top=Math.max(12,Math.min(innerHeight-h-12,r.top))+'px';paletteFrame=requestAnimationFrame(place)}place();
+ panel.onclick=e=>{e.stopPropagation();if(e.target.closest('.palette-close')){closePalette();trigger.focus();return}let button=e.target.closest('[data-palette-color]');if(!button)return;let color=button.dataset.paletteColor;n.color=color;card.style.background=palette[color];card.dataset.color=color;card.style.setProperty('--note-ink',noteInk(palette[color]));trigger.querySelector('.current-color').style.background=palette[color];panel.querySelectorAll('[data-palette-color]').forEach(b=>{let active=b===button;b.classList.toggle('chosen',active);b.setAttribute('aria-pressed',active);b.querySelector('span').textContent=active?'✓':''});panel.querySelector('.palette-value').innerHTML=esc(color)+' <span>'+palette[color]+'</span>';save()};
+ panel.addEventListener('keydown',e=>{if(e.key==='Escape'){e.stopPropagation();closePalette();trigger.focus()}});
+}
