@@ -73,3 +73,6 @@ Larger 22px bold card headings, 18px body text, and 360px new cards. Existing na
 
 ## v11 — Connection routing and selection
 Connections use left/right circular sockets according to card position, with shorter controlled curves. Click a connection to select it in red and show Delete connection. Click Delete to remove; undo restores it. Click elsewhere or Escape dismisses selection.
+
+## v12 — Reliable connection selection
+Slightly thicker lines, with an invisible 20px screen-space pointer target at every zoom. One relationship per pair of cards; reversed duplicates are prevented and existing duplicates are consolidated automatically. Desktop breakpoints at 1800px and 2400px improve controls, typography and sidebar spacing for 1080p and 1440p displays.
