@@ -70,3 +70,6 @@ Replace all files at the root of your GitHub Pages repository and hard-refresh a
 
 ## v10 — Readability and connections
 Larger 22px bold card headings, 18px body text, and 360px new cards. Existing narrow cards expand to at least 320px. Connection lines are thicker and meet detached circular input/output sockets. Hovering a card animates its connected lines and highlights its neighboring cards. Dotted world grid stays visible at every zoom. All zoom controls are limited to 50–200%.
+
+## v11 — Connection routing and selection
+Connections use left/right circular sockets according to card position, with shorter controlled curves. Click a connection to select it in red and show Delete connection. Click Delete to remove; undo restores it. Click elsewhere or Escape dismisses selection.
