@@ -55,3 +55,15 @@ Click Color while editing a card to open a floating swatch palette beside it. Th
 
 ## v8 — Canvas polish
 Card editing actions use 14px semibold text. Grid spacing never falls below 28 screen pixels; dots fade out between 80% and 35% zoom and remain hidden below 35%. Removed repeated footer instructions and the extra sidebar subtitle. All existing board and note data is retained.
+
+## v9 — Studio canvas
+- Black canvas and charcoal default cards, floating tool rail, collapsible board sidebar.
+- Add menu for notes, checklists and images. Inline editing and all existing boards preserved.
+- Bottom-left zoom menu: 50%, 100%, 200%, fit board, fit selected card, zoom in/out.
+- Smooth animated zoom presets and fit; animated connection drawing and drag feedback.
+- Snap to grid can be enabled/disabled in the zoom menu; preference saves on this device.
+- Wheel zoom remains cursor-centered. Low-zoom grid fades to avoid visual noise.
+- Ctrl/Command + +/- zooms; 0 resets; 1 fits board; 2 fits selected card.
+- Dark mode is the default for new workspaces; existing appearance preference is retained.
+
+Replace all files at the root of your GitHub Pages repository and hard-refresh after deployment. Board data stays in the same browser storage. Export a board backup before switching browsers or devices.
