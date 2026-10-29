@@ -34,3 +34,9 @@ Export each board as a JSON backup. Import that JSON on another browser or websi
 - Added animated connection creation and a live dashed connection preview.
 - Reduced header clutter and improved card controls. Uses system fonts without external font downloads.
 - Respects reduced-motion preferences. Existing saved user content is not removed.
+
+## Board controls and colors (v3)
+
+Right-click a board, or use its three-dot button, to rename, pin, archive or delete it. Pinned boards sort first. The Archive button shows archived boards; their menu includes Restore board. Deletion requires confirmation and is undoable with Ctrl/Command Z until reload. Existing notes and images are preserved.
+
+The mouse wheel now zooms around the cursor. Drag empty canvas to pan, or use Shift + wheel for horizontal movement. Dark mode uses neutral charcoal surfaces. The note palette includes all 18 colors from the supplied reference plus black, white and the original colors, with automatic text contrast.
