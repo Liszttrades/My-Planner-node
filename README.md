@@ -46,3 +46,6 @@ Board renaming now edits the name directly in the sidebar. Enter or clicking els
 
 ## v5 — Live card editing
 Double-click a card or click its three-dot button to edit its title and notes directly on the canvas. Changes save as you type. Click Done, press Escape or click outside to finish. Checklist text uses one item per line while editing. Colors, duplicate and delete controls are inside the card. Card shadows and grid contrast are stronger in both themes.
+
+## v6 — Readability
+Card body and checklist text is 17px at 100% canvas zoom; titles are 20px. UI text sizes have increased. New cards start at 320px wide; existing card positions and widths are preserved. The inline color picker is now a compact dropdown with a color preview.

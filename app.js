@@ -13,7 +13,7 @@ function drawEdges(){let b=board();$('#edges').innerHTML=b.edges.map(e=>{let a=b
 function applyView(){let v=board().view;$('#world').style.transform=`translate(${v.x}px,${v.y}px) scale(${v.z})`;$('#zoomLabel').textContent=Math.round(v.z*100)+'%';$('#canvas').style.backgroundPosition=`${v.x}px ${v.y}px`;$('#canvas').style.backgroundSize=`${22*v.z}px ${22*v.z}px`}
 function point(x,y){let r=$('#canvas').getBoundingClientRect(),v=board().view;return{x:(x-r.left-v.x)/v.z,y:(y-r.top-v.y)/v.z}}
 function center(){let r=$('#canvas').getBoundingClientRect();return point(r.left+r.width/2-100,r.top+r.height/2-40)}
-function add(type,pos=center(),data={}){remember();let n={id:uid(),type,title:type==='checklist'?'Checklist':'Untitled note',body:type==='checklist'?'First task':'',color:type==='note'?'sand':'white',x:pos.x,y:pos.y,w:260,...data};board().nodes.push(n);selected=n.id;render();save();if(type!=='image')edit(n.id)}
+function add(type,pos=center(),data={}){remember();let n={id:uid(),type,title:type==='checklist'?'Checklist':'Untitled note',body:type==='checklist'?'First task':'',color:type==='note'?'sand':'white',x:pos.x,y:pos.y,w:320,...data};board().nodes.push(n);selected=n.id;render();save();if(type!=='image')edit(n.id)}
 let liveEdit=null;
 function finishLive(){if(!liveEdit)return;liveEdit=null;save();render()}
 function edit(id){
@@ -29,10 +29,10 @@ function edit(id){
  el.querySelector('.node-content').replaceChildren(title,body);
  body.oninput=()=>{n.body=body.innerText;save();requestAnimationFrame(drawEdges)};
  }
- let controls=document.createElement('div');controls.className='live-controls';controls.innerHTML=`<div class="live-colors">${Object.entries(palette).map(([k,v])=>`<button class="swatch ${n.color===k?'chosen':''}" data-live-color="${k}" style="background:${v}" aria-label="${k}" title="${k}"></button>`).join('')}</div><div class="live-actions"><button data-live-action="duplicate" title="Duplicate card">Duplicate</button><button data-live-action="delete" class="danger">Delete</button><button data-live-action="done">Done ✓</button></div>`;
- el.append(controls);
+ let controls=document.createElement('div');controls.className='live-controls';controls.innerHTML=`<div class="color-field"><span class="current-color" style="background:${palette[n.color]}"></span><select aria-label="Card color" class="card-color-select">${Object.entries(palette).map(([k,v])=>`<option value="${k}" ${n.color===k?'selected':''}>${k.charAt(0).toUpperCase()+k.slice(1)}</option>`).join('')}</select></div><div class="live-actions"><button data-live-action="duplicate" title="Duplicate card">Duplicate</button><button data-live-action="delete" class="danger">Delete</button><button data-live-action="done">Done ✓</button></div>`;
+ el.append(controls);controls.querySelector('select').onchange=e=>{let color=e.target.value;n.color=color;el.style.background=palette[color];el.dataset.color=color;el.style.setProperty('--note-ink',noteInk(palette[color]));controls.querySelector('.current-color').style.background=palette[color];save()};
  controls.onclick=e=>{e.stopPropagation();let color=e.target.closest('[data-live-color]')?.dataset.liveColor,action=e.target.closest('[data-live-action]')?.dataset.liveAction;
- if(color){n.color=color;el.style.background=palette[color];el.dataset.color=color;el.style.setProperty('--note-ink',noteInk(palette[color]));controls.querySelector('.chosen')?.classList.remove('chosen');e.target.classList.add('chosen');save()}
+
  if(action==='done')finishLive();
  if(action==='delete'){liveEdit=null;removeNode(id)}
  if(action==='duplicate'){let copy=structuredClone(n);copy.id=uid();copy.x+=40;copy.y+=40;board().nodes.push(copy);finishLive()}
