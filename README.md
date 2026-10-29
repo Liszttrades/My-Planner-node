@@ -76,3 +76,6 @@ Connections use left/right circular sockets according to card position, with sho
 
 ## v12 — Reliable connection selection
 Slightly thicker lines, with an invisible 20px screen-space pointer target at every zoom. One relationship per pair of cards; reversed duplicates are prevented and existing duplicates are consolidated automatically. Desktop breakpoints at 1800px and 2400px improve controls, typography and sidebar spacing for 1080p and 1440p displays.
+
+## v13 — Socket alignment and control polish
+Connections and their live preview measure the actual socket layout. Minimum card width during resize matches the visible card width. Sidebar collapse/expand is now in the floating toolbar. Refined toolbar/menu padding and corner radii. Board deletion uses a compact confirmation with the board title and card count, without a redundant name field or blurred backdrop.
