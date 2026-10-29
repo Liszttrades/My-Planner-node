@@ -67,3 +67,6 @@ Card editing actions use 14px semibold text. Grid spacing never falls below 28 s
 - Dark mode is the default for new workspaces; existing appearance preference is retained.
 
 Replace all files at the root of your GitHub Pages repository and hard-refresh after deployment. Board data stays in the same browser storage. Export a board backup before switching browsers or devices.
+
+## v10 — Readability and connections
+Larger 22px bold card headings, 18px body text, and 360px new cards. Existing narrow cards expand to at least 320px. Connection lines are thicker and meet detached circular input/output sockets. Hovering a card animates its connected lines and highlights its neighboring cards. Dotted world grid stays visible at every zoom. All zoom controls are limited to 50–200%.
