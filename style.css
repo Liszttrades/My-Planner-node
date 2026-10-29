@@ -49,3 +49,6 @@ body{font-size:16px}aside{width:220px;background:var(--bg);padding:28px 14px 18p
 #canvas::before{background-image:radial-gradient(circle at .5px .5px,var(--dot) 0px,var(--dot) var(--dot-radius,.65px),transparent 1px)}
 /* Screen-fixed dots retain their size and contrast at every zoom. */
 #canvas::before{background-image:radial-gradient(circle at 1px 1px,var(--dot) 1px,transparent 1.15px);background-size:28px 28px;background-position:0 0;opacity:1}.dark{--dot:#515151}:root{--dot:#ababab}#groupBounds{pointer-events:auto;cursor:grab;z-index:0}#groupBounds:active{cursor:grabbing}.port.port-connected{border-color:#b8b8b8;background:radial-gradient(circle at 32% 22%,#303030,#080808 75%)!important}.port.port-connected::after{background:radial-gradient(circle at 35% 25%,#fff,#b4b4b4 75%)}.port.port-junction{border-color:#c9c9c9;box-shadow:0 0 6px #d7d7d723}.port.port-junction::after{background:radial-gradient(circle at 30% 20%,#fff,#dedede 45%,#858585)}
+
+/* Fine dots with compact spacing, including at 200% zoom. */
+#canvas::before{background-image:radial-gradient(circle at .5px .5px,var(--dot) .65px,transparent 1px);background-size:var(--grid-spacing,24px) var(--grid-spacing,24px);background-position:var(--grid-x,0px) var(--grid-y,0px);opacity:1}.dark{--dot:#484848}

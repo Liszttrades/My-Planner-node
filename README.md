@@ -88,3 +88,6 @@ Right-drag selection uses a neutral dotted marquee and translucent fill. Selecte
 
 ## v16 — Static grid and draggable selection area
 The background dot grid uses constant 28px screen spacing and a crisp 1px dot at every zoom. Connected sockets have a subtle radial finish; shared junctions get a slightly brighter rim. Left-drag empty space inside a group selection to move all its selected cards, preserving spacing and connections.
+
+## v17 — Fine compact grid
+Restored the finer background dots. Grid spacing ranges from 16px to 24px and stays capped at 24px while zooming in. All selection, group dragging and connection changes remain.
