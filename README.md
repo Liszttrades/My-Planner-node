@@ -85,3 +85,6 @@ Hold the right mouse button on the canvas and drag a box across cards to select 
 
 ## v15 — Selection effect and visible grid
 Right-drag selection uses a neutral dotted marquee and translucent fill. Selected groups retain a bounding box; their internal connections animate with dashes. Dots have a pixel-aligned center and a visible minimum radius at 50% zoom to avoid disappearing between pixels.
+
+## v16 — Static grid and draggable selection area
+The background dot grid uses constant 28px screen spacing and a crisp 1px dot at every zoom. Connected sockets have a subtle radial finish; shared junctions get a slightly brighter rim. Left-drag empty space inside a group selection to move all its selected cards, preserving spacing and connections.
