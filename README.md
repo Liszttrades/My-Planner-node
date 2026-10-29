@@ -79,3 +79,6 @@ Slightly thicker lines, with an invisible 20px screen-space pointer target at ev
 
 ## v13 — Socket alignment and control polish
 Connections and their live preview measure the actual socket layout. Minimum card width during resize matches the visible card width. Sidebar collapse/expand is now in the floating toolbar. Refined toolbar/menu padding and corner radii. Board deletion uses a compact confirmation with the board title and card count, without a redundant name field or blurred backdrop.
+
+## v14 — Box selection and finer dots
+Hold the right mouse button on the canvas and drag a box across cards to select them. Release, then left-drag any selected card to move the group with its spacing preserved. Ctrl/Command A selects all; Escape or clicking blank canvas clears the selection. Snap to grid applies one shared offset to the group. The 50% zoom grid uses finer, lower-contrast dots without disappearing.
