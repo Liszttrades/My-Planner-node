@@ -82,3 +82,6 @@ Connections and their live preview measure the actual socket layout. Minimum car
 
 ## v14 — Box selection and finer dots
 Hold the right mouse button on the canvas and drag a box across cards to select them. Release, then left-drag any selected card to move the group with its spacing preserved. Ctrl/Command A selects all; Escape or clicking blank canvas clears the selection. Snap to grid applies one shared offset to the group. The 50% zoom grid uses finer, lower-contrast dots without disappearing.
+
+## v15 — Selection effect and visible grid
+Right-drag selection uses a neutral dotted marquee and translucent fill. Selected groups retain a bounding box; their internal connections animate with dashes. Dots have a pixel-aligned center and a visible minimum radius at 50% zoom to avoid disappearing between pixels.
