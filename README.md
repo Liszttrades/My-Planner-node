@@ -52,3 +52,6 @@ Card body and checklist text is 17px at 100% canvas zoom; titles are 20px. UI te
 
 ## v7 — Side palette
 Click Color while editing a card to open a floating swatch palette beside it. The panel prefers the right side and switches left near the screen edge. Colors update live without enlarging the card. Click its close button or finish editing to dismiss it.
+
+## v8 — Canvas polish
+Card editing actions use 14px semibold text. Grid spacing never falls below 28 screen pixels; dots fade out between 80% and 35% zoom and remain hidden below 35%. Removed repeated footer instructions and the extra sidebar subtitle. All existing board and note data is retained.
