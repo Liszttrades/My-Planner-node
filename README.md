@@ -109,3 +109,6 @@ Removed Done; outside-click saving remains. Edit actions inherit the card color 
 
 ## v23 — Hollow unconnected sockets
 Dots use a 0.7px radius with existing spacing. Connection sockets increase from 18px to 22px. Unconnected sockets have a muted hollow ring; connected sockets retain the filled center. Socket measurement keeps line endpoints aligned.
+
+## v24 — Context creation and four-corner resizing
+Right-click blank canvas without dragging to open the animated searchable add-card menu at the cursor. Right-drag still box-selects cards. Menu-created cards use that canvas position. Click a card to show four corner handles; drag any corner to resize width and height while anchoring the opposite corner. Sizes save with the board. Connection sockets follow the card, and dash phase is preserved through redraws. Compact project bar includes inline board name, Save backup, native file sharing (or download fallback), and Open board backup. Sharing sends a portable board file, not a cloud collaboration link.
