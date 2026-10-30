@@ -134,3 +134,9 @@ Share now opens private collaboration. See COLLABORATION_SETUP.md and collaborat
 
 ## v29 — Hover label pencil and smooth transparent pen
 The top card label has a hover pencil that renames only that line. Drawings have fully transparent backgrounds in both themes, including existing drawings. Pen strokes use midpoint quadratic curves with round ends. Right-click the Pen button at any time, or right-click the canvas with Pen enabled, to open the width slider (1–24px), preset color palette and custom color picker. Settings apply to new strokes and save with the workspace; each stroke keeps its width and color through reloads, backups and sharing. Automatic contrast uses light ink in dark mode and dark ink in light mode. Click outside or press Escape to close the panel.
+
+
+## v30 — Additive selection and middle-button navigation
+Hold Shift and click individual cards or drawing strokes to add or remove them from selection. Shift-click does not start card editing or pen drawing, and leaves native text selection alone inside editors. Drag a selected item to move the selection together. Hold the middle mouse button (press the wheel) and drag to pan while Pen or another tool remains active; releasing restores the current tool. Pointer capture handles release outside the canvas.
+
+Removed the unused legacy modal editor, its event handlers, and an overwritten sharing handler. Connection redraw requests are coalesced into a single animation-frame pass rather than rebuilding repeatedly within the same frame. Online collaboration keeps its existing optional setup.
