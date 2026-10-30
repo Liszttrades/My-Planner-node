@@ -130,3 +130,7 @@ Use the hover pencil to edit checklist title and items. Only checkbox controls c
 The Pen button (P) draws freehand on the canvas. Click it again or press Escape to exit. Right-drag a selection around drawings and cards, then left-drag to move them. Drawing strokes support duplication, deletion, Undo and board backups.
 
 Share now opens private collaboration. See COLLABORATION_SETUP.md and collaboration.sql; cloud-config.js must be configured before online sharing works. Existing local storage remains in place. Cloud access requires email sign-in and owner approval, with Viewer/Editor roles. Synchronization uses version-checked snapshots with conflict backups, not simultaneous rich-text coediting. Cloud operations are not live-tested without a configured backend.
+
+
+## v29 — Hover label pencil and smooth transparent pen
+The top card label has a hover pencil that renames only that line. Drawings have fully transparent backgrounds in both themes, including existing drawings. Pen strokes use midpoint quadratic curves with round ends. Right-click the Pen button at any time, or right-click the canvas with Pen enabled, to open the width slider (1–24px), preset color palette and custom color picker. Settings apply to new strokes and save with the workspace; each stroke keeps its width and color through reloads, backups and sharing. Automatic contrast uses light ink in dark mode and dark ink in light mode. Click outside or press Escape to close the panel.
