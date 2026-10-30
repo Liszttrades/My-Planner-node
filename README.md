@@ -94,3 +94,6 @@ Restored the finer background dots. Grid spacing ranges from 16px to 24px and st
 
 ## v18 — Click to trace connections
 Click a card to keep its connected lines animated, highlight its immediate neighbors and pulse connected sockets. Click another card to trace that card, or click blank canvas/Escape to clear. Reduced-motion preferences show a static highlight.
+
+## v19 — Seamless connection flow
+All animated connection states use a 10px dash plus 7px gap and travel exactly two complete periods (34px) per linear loop. The draft line retains its matching 24px cycle. This removes the mismatch at the animation restart.
