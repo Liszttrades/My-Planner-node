@@ -118,3 +118,7 @@ Wheel over a selected or edited overflowing note scrolls its content; wheel outs
 
 ## v26 — Card context actions
 Double-clicking blank canvas no longer adds a note. Right-click a card or selected group to open Duplicate/Delete actions. Duplicating a group preserves its internal connections; deleting removes the selected cards and incident connections. Both operations support Undo. Blank-canvas right-click creation and right-drag box selection remain.
+
+
+## v27 — Inline rich text and card labels
+Header labels rename directly on their own line. The header swatch opens card colors. Inline editing has no Duplicate/Delete row; these actions remain available from the card context menu. Notes support selected-text bold, italic, underline, yellow highlight, and paragraph alignment, saved on input and when clicking outside. Rich text persists in board backups and is sanitized before display.
