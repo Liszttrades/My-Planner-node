@@ -52,3 +52,6 @@ body{font-size:16px}aside{width:220px;background:var(--bg);padding:28px 14px 18p
 
 /* Fine dots with compact spacing, including at 200% zoom. */
 #canvas::before{background-image:radial-gradient(circle at .5px .5px,var(--dot) .65px,transparent 1px);background-size:var(--grid-spacing,24px) var(--grid-spacing,24px);background-position:var(--grid-x,0px) var(--grid-y,0px);opacity:1}.dark{--dot:#484848}
+
+/* Clicked relationships stay animated until another card or empty canvas is selected. */
+.edge.clicked-flow,.dark .edge.clicked-flow{stroke:#d0d0d0;stroke-width:3;stroke-dasharray:10 7;animation:connectionFlow 1s linear infinite}.node.connection-neighbor{border-color:#aaa;box-shadow:0 0 0 1px #9995,0 10px 28px #0003}.node.connection-origin{outline:1.5px solid #c2c2c2;outline-offset:3px}.port.socket-trace{border-color:#ededed;animation:socketTrace 1.6s ease-in-out infinite}.edge.edge-selected,.dark .edge.edge-selected{stroke:#ef6262!important;stroke-dasharray:none!important;animation:none!important}@keyframes socketTrace{0%,100%{box-shadow:0 0 0 0 #c5c5c500}50%{box-shadow:0 0 0 4px #c5c5c52b}}@media(prefers-reduced-motion:reduce){.edge.clicked-flow,.port.socket-trace{animation:none!important}}

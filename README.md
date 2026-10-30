@@ -91,3 +91,6 @@ The background dot grid uses constant 28px screen spacing and a crisp 1px dot at
 
 ## v17 — Fine compact grid
 Restored the finer background dots. Grid spacing ranges from 16px to 24px and stays capped at 24px while zooming in. All selection, group dragging and connection changes remain.
+
+## v18 — Click to trace connections
+Click a card to keep its connected lines animated, highlight its immediate neighbors and pulse connected sockets. Click another card to trace that card, or click blank canvas/Escape to clear. Reduced-motion preferences show a static highlight.
