@@ -97,3 +97,6 @@ Click a card to keep its connected lines animated, highlight its immediate neigh
 
 ## v19 — Seamless connection flow
 All animated connection states use a 10px dash plus 7px gap and travel exactly two complete periods (34px) per linear loop. The draft line retains its matching 24px cycle. This removes the mismatch at the animation restart.
+
+## v20 — Visible card controls
+Card-type labels are 16px bold (17px on large desktop screens), with a stronger header divider. Inline edit actions use contrasting boxed buttons, 16px labels and larger click targets.
