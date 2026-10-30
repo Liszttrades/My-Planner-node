@@ -140,3 +140,15 @@ The top card label has a hover pencil that renames only that line. Drawings have
 Hold Shift and click individual cards or drawing strokes to add or remove them from selection. Shift-click does not start card editing or pen drawing, and leaves native text selection alone inside editors. Drag a selected item to move the selection together. Hold the middle mouse button (press the wheel) and drag to pan while Pen or another tool remains active; releasing restores the current tool. Pointer capture handles release outside the canvas.
 
 Removed the unused legacy modal editor, its event handlers, and an overwritten sharing handler. Connection redraw requests are coalesced into a single animation-frame pass rather than rebuilding repeatedly within the same frame. Online collaboration keeps its existing optional setup.
+
+
+## v31 — Eraser, saved groups, board search and drawing resize
+Select a drawing and drag a corner to resize it proportionally. The longest side stops at 80 canvas pixels and ink stays at least 1.5px thick. Select multiple strokes to resize the whole selection using the outer group corners; the selection stops at 120px on its longest side. Card minimum sizes are unchanged.
+
+Use Eraser (E) to erase whole strokes. Drag across more than one stroke in a single gesture; one Undo restores that gesture. Notes and images are never erased.
+
+Shift-click items, then right-click → Group selection. Clicking any member selects the whole saved group, which moves together. Right-click → Ungroup to separate the items. Groups survive reloads, backups and online board snapshots. Duplicating groups creates separate group identities.
+
+Use the magnifying glass or Ctrl/Command F outside an editor to search titles, labels and text in the current board. Click a result to center and select its card. Escape closes search.
+
+Browser checks: single and group drawing resizing, 80px minimum, persistent grouping, note-content search, stroke erasing and Undo. Optional online collaboration still requires the supplied backend setup.
