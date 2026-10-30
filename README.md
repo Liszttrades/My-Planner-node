@@ -106,3 +106,6 @@ Darkened normal and animated connection lines and circular ports in light mode. 
 
 ## v22 — Quiet editing and inline title rename
 Removed Done; outside-click saving remains. Edit actions inherit the card color with subtle borders. Hover a card title to reveal a pencil; click it to rename only that line. Enter or blur saves, Escape cancels. Dot radius reduced from 1px to 0.5px without changing spacing.
+
+## v23 — Hollow unconnected sockets
+Dots use a 0.7px radius with existing spacing. Connection sockets increase from 18px to 22px. Unconnected sockets have a muted hollow ring; connected sockets retain the filled center. Socket measurement keeps line endpoints aligned.
