@@ -112,3 +112,6 @@ Dots use a 0.7px radius with existing spacing. Connection sockets increase from 
 
 ## v24 — Context creation and four-corner resizing
 Right-click blank canvas without dragging to open the animated searchable add-card menu at the cursor. Right-drag still box-selects cards. Menu-created cards use that canvas position. Click a card to show four corner handles; drag any corner to resize width and height while anchoring the opposite corner. Sizes save with the board. Connection sockets follow the card, and dash phase is preserved through redraws. Compact project bar includes inline board name, Save backup, native file sharing (or download fallback), and Open board backup. Sharing sends a portable board file, not a cloud collaboration link.
+
+## v25 — Wheel scrolling and proportional images
+Wheel over a selected or edited overflowing note scrolls its content; wheel outside the card zooms again. Ctrl/Command wheel still zooms. Image cards have automatic proportional height without an oversized fixed frame. Image resizing locks proportions and caps width at the uploaded image's intrinsic width (within 360–1400px). Notes and checklists have a 360px minimum width and 220px minimum height, matching the default baseline. Image cards have a 360px minimum width and natural proportional height.
