@@ -160,3 +160,11 @@ Right-click a card, drawing or selection and choose Lock position. Locked items 
 The sidebar Forma guide replaces the previous controls wall of text with eight illustrated steps: create cards, edit, navigate/search, connect ideas, select/group, draw/resize/erase, lock/unlock, and save/share. It includes topic navigation, progress, Back/Next buttons and keyboard arrow navigation, and adapts to both themes and smaller screens. Press ? to open it.
 
 Verified in browser: locked card drag is blocked; unlocking permits movement; locked drawing groups survive erasing and reload; tutorial navigation and light/dark appearance.
+
+
+## v33 — Open-space duplication and protected deletion
+Duplicate now finds a nearby open position with space around existing cards and drawings. Multi-item duplicates preserve their layout, internal connections and independent group IDs. The viewport reveals the new selection if needed. Existing stacked items are not rearranged automatically.
+
+Locked items must be unlocked before deletion. The context menu shows a disabled Unlock to delete action, and Delete/Backspace use the same check. Mixed selections with any locked item are blocked as a whole. Unlock first, then delete. Undo remains available for successful deletion.
+
+Verified: nonoverlapping duplication, twelve consecutive placement calculations, locked delete menu, keyboard protection, and deletion after unlocking.
