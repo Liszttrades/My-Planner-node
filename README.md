@@ -152,3 +152,11 @@ Shift-click items, then right-click → Group selection. Clicking any member sel
 Use the magnifying glass or Ctrl/Command F outside an editor to search titles, labels and text in the current board. Click a result to center and select its card. Escape closes search.
 
 Browser checks: single and group drawing resizing, 80px minimum, persistent grouping, note-content search, stroke erasing and Undo. Optional online collaboration still requires the supplied backend setup.
+
+
+## v32 — Position locks and the Forma guide
+Right-click a card, drawing or selection and choose Lock position. Locked items cannot be moved, resized or erased, including through group movement. They remain selectable, and card text, colors and checklist completion can still be edited. Right-click → Unlock position restores layout controls. Position locks persist in browser storage, downloaded backups and shared board snapshots. Lock and unlock support Undo. Explicit deletion remains available.
+
+The sidebar Forma guide replaces the previous controls wall of text with eight illustrated steps: create cards, edit, navigate/search, connect ideas, select/group, draw/resize/erase, lock/unlock, and save/share. It includes topic navigation, progress, Back/Next buttons and keyboard arrow navigation, and adapts to both themes and smaller screens. Press ? to open it.
+
+Verified in browser: locked card drag is blocked; unlocking permits movement; locked drawing groups survive erasing and reload; tutorial navigation and light/dark appearance.
