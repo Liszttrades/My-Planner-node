@@ -122,3 +122,11 @@ Double-clicking blank canvas no longer adds a note. Right-click a card or select
 
 ## v27 — Inline rich text and card labels
 Header labels rename directly on their own line. The header swatch opens card colors. Inline editing has no Duplicate/Delete row; these actions remain available from the card context menu. Notes support selected-text bold, italic, underline, yellow highlight, and paragraph alignment, saved on input and when clicking outside. Rich text persists in board backups and is sanitized before display.
+
+
+## v28 — Checklist editing, image placement, canvas pen and private sharing
+Use the hover pencil to edit checklist title and items. Only checkbox controls change completion; double-clicking task text does not edit or toggle it. Dropped images find open space in columns without overlapping existing cards. Note alignment is an icon-only popover with named hover tooltips. The footer color control is removed; use the top swatch. Clicking outside closes the color palette.
+
+The Pen button (P) draws freehand on the canvas. Click it again or press Escape to exit. Right-drag a selection around drawings and cards, then left-drag to move them. Drawing strokes support duplication, deletion, Undo and board backups.
+
+Share now opens private collaboration. See COLLABORATION_SETUP.md and collaboration.sql; cloud-config.js must be configured before online sharing works. Existing local storage remains in place. Cloud access requires email sign-in and owner approval, with Viewer/Editor roles. Synchronization uses version-checked snapshots with conflict backups, not simultaneous rich-text coediting. Cloud operations are not live-tested without a configured backend.
