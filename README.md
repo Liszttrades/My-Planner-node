@@ -115,3 +115,6 @@ Right-click blank canvas without dragging to open the animated searchable add-ca
 
 ## v25 — Wheel scrolling and proportional images
 Wheel over a selected or edited overflowing note scrolls its content; wheel outside the card zooms again. Ctrl/Command wheel still zooms. Image cards have automatic proportional height without an oversized fixed frame. Image resizing locks proportions and caps width at the uploaded image's intrinsic width (within 360–1400px). Notes and checklists have a 360px minimum width and 220px minimum height, matching the default baseline. Image cards have a 360px minimum width and natural proportional height.
+
+## v26 — Card context actions
+Double-clicking blank canvas no longer adds a note. Right-click a card or selected group to open Duplicate/Delete actions. Duplicating a group preserves its internal connections; deleting removes the selected cards and incident connections. Both operations support Undo. Blank-canvas right-click creation and right-drag box selection remain.
