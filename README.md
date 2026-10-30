@@ -100,3 +100,6 @@ All animated connection states use a 10px dash plus 7px gap and travel exactly t
 
 ## v20 — Visible card controls
 Card-type labels are 16px bold (17px on large desktop screens), with a stronger header divider. Inline edit actions use contrasting boxed buttons, 16px labels and larger click targets.
+
+## v21 — Light-mode contrast
+Darkened normal and animated connection lines and circular ports in light mode. Dots now use a 1px radius while preserving the existing compact spacing.
