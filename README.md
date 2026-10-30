@@ -103,3 +103,6 @@ Card-type labels are 16px bold (17px on large desktop screens), with a stronger 
 
 ## v21 — Light-mode contrast
 Darkened normal and animated connection lines and circular ports in light mode. Dots now use a 1px radius while preserving the existing compact spacing.
+
+## v22 — Quiet editing and inline title rename
+Removed Done; outside-click saving remains. Edit actions inherit the card color with subtle borders. Hover a card title to reveal a pencil; click it to rename only that line. Enter or blur saves, Escape cancels. Dot radius reduced from 1px to 0.5px without changing spacing.
