@@ -190,3 +190,11 @@ Projects + creates named folders. Shift-click multiple sidebar boards, then drag
 Member badges show approved access counts, not online presence: local boards show 1, shared counts show — until loaded, and 10 or more shows 10+. Existing cloud users must run member-count-migration.sql once; see COLLABORATION_SETUP.md. Keep your configured cloud-config.js during updates.
 
 Verified in browser: folder creation, Shift-selecting two boards, dragging both into a folder, Undo/Redo of that move, persistence after reload, folder heading widths, and scale(0.85) at displayed 100%. The newest 100 history states were checked programmatically. Cloud member RPC requires backend setup and has not been live-tested.
+
+
+## v36 — Immediate meaningful Undo and compact reference proportions
+Undo applies synchronously and skips snapshots whose board content is unchanged, including empty editor openings. Panning no longer records an Undo step. UI preferences and the current viewport are preserved across Undo. A brief 65ms opacity transition replaces the longer fade. Image data is shared once across the history cache instead of being duplicated into each snapshot; all 100 steps are retained and unused cache entries are released when history is trimmed. IndexedDB saves and portable backups still contain the original image data.
+
+The project bar is 354×42px on desktop. Zoom controls are 34px high, with vector fit/undo/redo icons, and the zoom menu is 224px wide with compact text. Dark-mode dots retain the 0.7px radius and spacing but have reduced contrast/opacity. This uses the reference's supplied dimensions while preserving Forma controls.
+
+Verified: adding an unchanged note then one Ctrl Z removes it; three strokes then three Ctrl Z restores the original stroke count with Pen still active; DOM measurement confirms 354×42px project bar and 224px zoom menu. History cache test preserves 100 snapshots, restores images and ignores viewport-only changes.
