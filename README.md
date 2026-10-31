@@ -246,3 +246,11 @@ Fixed stale card coordinates after moving a selection and undoing. Cached card c
 Undo cancels obsolete drag/resize/ink gesture snapshots, clears transient motion classes, and immediately updates connection geometry and selection bounds after restoring state.
 
 Browser regression check: Select All on 54 items (50 images), group, drag, undo, redo, and keyboard Ctrl+Z / Ctrl+Shift+Z. All 54 card coordinates matched their recorded starting positions after undo and their moved positions after redo; both independent connection paths matched the starting paths after undo. JavaScript syntax check passed.
+
+
+## v43 — Offscreen image geometry and accurate group bounds
+Removed content-visibility:auto from card images. It could skip offscreen image layout, causing card heights, socket coordinates and group bounds to be measured before the full image height was available. Reused image elements and batched uploads remain in place.
+
+Images now retain their intrinsic width/height metadata. A ResizeObserver watches every mounted card and schedules a shared connection/bounds update whenever a card changes size, including after decoding, editing or history restoration. Removed/replaced cards are unobserved. Both connection geometry and selection bounds update in the same scheduled frame. Pan mode and Space-drag preserve the current selection instead of dragging its group.
+
+Browser regression checks used 200 images of three aspect ratios and 199 connected paths. Selected all 200, grouped, moved, undid, navigated to Card 200 outside the original viewport, panned, and repeated the move/undo from that end. All 200 positions and sizes matched the baseline. All 199 paths matched their actual card sockets (maximum endpoint error 0 in the test). Group bounds matched the full selection exactly: left -18, top -18, width 5076, height 16841 world units. Verified panning preserved all 200 selected items and coordinates. JavaScript syntax check passed.
