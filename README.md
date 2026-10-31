@@ -306,3 +306,13 @@ Pinned boards are sorted first within their own project folder. The sidebar opti
 Browser verification: selected three boards and deleted/restored the whole set; repeated inside a project containing a 54-card board, restoring all 22 boards and all 54 cards; Delete shortcut correctly showed a two-board confirmation; project inline rename saved and Escape canceled; inline project creation; pinned board first within its folder; one-list view retained 22 boards and By project restored membership; name sorting kept pins first; sidebar preferences survived reload; search SVG present. Clean startup produced no new application errors, and all 199 connections on the 200-card board still matched their sockets. All four JavaScript files passed syntax validation.
 
 Upload sidebar.js along with planning.js, the other root files and assets/. Keep your configured cloud-config.js.
+
+
+## v48 — Separate sidebar section controls
+All boards and Projects now have separate section headers with organization and sorting menus. A divider separates the board list from project folders. Projects has no upper create button; the lower New project action uses the same icon, typography and spacing as New board. Folder titles use the same font size and weight as those creation actions. Header labels and menu buttons use the shared tooltip styling.
+
+Board sorting supports original order, name and recently opened, keeping pinned boards first within their folder. Project folder sorting independently supports original order and name. Sorting uses copies, retains stored original order, and preserves preferences through undo.
+
+Validation: all four application JavaScript files passed syntax checks. Executed the actual sorting functions against fixtures to verify independent board/project ordering, pins first, archived filtering, restoration of original order and unchanged source arrays. Verified project-sort preference preservation in undo. Browser preview verification was unavailable this pass because browser access was blocked by policy.
+
+Upload the complete archive contents, including sidebar.js, planning.js and assets/. Preserve your configured cloud-config.js.
