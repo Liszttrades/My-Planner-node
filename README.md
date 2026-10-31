@@ -216,3 +216,11 @@ The zoom value is white in dark mode, dark in light mode. Its magnifier-plus, pe
 Upload the assets/ folder along with the root files. Inter font and license are bundled there, together with the Lucide license. Keep your configured cloud-config.js.
 
 Verified in browser: sidebar width 256px, Inter font declaration, 32px zoom button, exactly two separated zoom SVGs, white percentage in dark mode, empty Undo/Redo disabled, Undo enabled after drawing, Redo enabled after Undo, and shortcut tooltip visibility.
+
+
+## v40 — Pen inspector and responsive color picking
+Redesigned the pen settings as a compact inspector with a rounded numeric width field, thin slider and white thumb, live stroke preview, integrated saturation/brightness surface, rainbow hue slider, editable hex value, copy action, and preset swatches. Width remains adjustable from 1 to 24px. Automatic contrast is retained.
+
+Color dragging uses pointer capture and coalesces changes into one animation frame. Preferences save on release or commit, without scanning undo history on every pointer movement. Existing drawings retain their own color and width. Keyboard arrows also adjust the color surface.
+
+Verified numeric width and hex entry, saturation/brightness dragging, preference persistence after reload, and drawing with the chosen settings. Upload assets/ and preserve your configured cloud-config.js.
