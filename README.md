@@ -198,3 +198,7 @@ Undo applies synchronously and skips snapshots whose board content is unchanged,
 The project bar is 354×42px on desktop. Zoom controls are 34px high, with vector fit/undo/redo icons, and the zoom menu is 224px wide with compact text. Dark-mode dots retain the 0.7px radius and spacing but have reduced contrast/opacity. This uses the reference's supplied dimensions while preserving Forma controls.
 
 Verified: adding an unchanged note then one Ctrl Z removes it; three strokes then three Ctrl Z restores the original stroke count with Pen still active; DOM measurement confirms 354×42px project bar and 224px zoom menu. History cache test preserves 100 snapshots, restores images and ignores viewport-only changes.
+
+
+## v37 — Pure black background
+Dark-mode workspace background and sidebar both use #000000.
