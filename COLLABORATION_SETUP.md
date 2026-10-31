@@ -33,3 +33,9 @@ Use two separate browser profiles with different accounts. Verify an unapproved 
 The SQL uses Row Level Security and checks permissions again inside save/approval functions. Do not disable RLS or expose secret keys. This package has not been connected to a live Supabase project, so authentication, approval and syncing require this setup and the checks above.
 
 Supabase reference: https://supabase.com/docs/guides/auth/auth-email-passwordless
+
+
+## Member badges (v35)
+For an existing configured database, run only `member-count-migration.sql` in Supabase SQL Editor. Fresh installations can run the full `collaboration.sql`, which already includes that function. The RPC returns the board owner plus approved members, checks board access, and does not expose the member list. Refresh shared boards in Share to refresh counts.
+
+The sidebar badge shows people with access, not live online presence. At 10 or more it reads 10+. A private local board shows 1; a shared board whose count has not loaded shows —. Counts cannot be live-tested until your backend is configured. Project folders belong to your local workspace and do not change permissions or move anyone else's boards. Keep your configured `cloud-config.js` when uploading updates.

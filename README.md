@@ -178,3 +178,15 @@ The sidebar uses a black background in dark mode, simple outline icons, restrain
 Ctrl/Command V imports image clipboard files directly into image cards, even when a card editor had focus. Plain-text paste still works normally in text fields. Copied HTML image sources and image URLs are attempted as a fallback. Some remote websites block browser fetches: use the browser's Copy image action rather than Copy image address in that case. Existing open-space image placement is retained.
 
 Verified in browser: draw → Ctrl Z → draw again without changing tools; direct PNG clipboard paste creates an image card; full long title is shown; light/dark sidebar and controls.
+
+
+## v35 — Projects, beginning-only titles, lighter canvas and Undo
+Dots return to 0.7px. Board titles use a single line with an ellipsis at the end; the beginning stays visible, and hovering reveals the full name. The default display reads 100% while the actual canvas scale is 0.85. Zoom presets and pointer coordinates use the same baseline. Existing workspace views migrate once without changing node dimensions.
+
+Undo retains 100 session snapshots. Rapid key presses are applied together on an animation frame, with a subtle 120ms fade and no entrance animation for restored items. Pen/Eraser mode stays active.
+
+Projects + creates named folders. Shift-click multiple sidebar boards, then drag a selected row onto a project heading. Drop onto All boards to move them out. Project headings collapse/expand; the dots beside a project let you rename or remove the folder. Removing a folder keeps its boards. Folder organization and board movement support Undo and persist after reload.
+
+Member badges show approved access counts, not online presence: local boards show 1, shared counts show — until loaded, and 10 or more shows 10+. Existing cloud users must run member-count-migration.sql once; see COLLABORATION_SETUP.md. Keep your configured cloud-config.js during updates.
+
+Verified in browser: folder creation, Shift-selecting two boards, dragging both into a folder, Undo/Redo of that move, persistence after reload, folder heading widths, and scale(0.85) at displayed 100%. The newest 100 history states were checked programmatically. Cloud member RPC requires backend setup and has not been live-tested.
