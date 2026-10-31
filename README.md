@@ -282,3 +282,15 @@ The guide includes a new planning-tools step. Features live in planning.js, sepa
 Browser validation: header and sidebar title motion reaches the exact overflow distance and resets; native board/header title tooltips absent; both canvas borders 1px; all four templates added and undone; task/client/budget values and saved views survived reload; budget undo restored the original amount; AI prompt copy and pasted checklist creation; minimap click navigation; and the 200-card grouped move/undo regression with 199 connection endpoints matched to their sockets. Core, collaboration and planning scripts passed syntax checks. Optional authenticated cloud sync was not live-tested because this preview has no Supabase configuration.
 
 Upload planning.js as well as the root files and assets/ folder. Keep your configured cloud-config.js.
+
+
+## v46 — Range selection, project actions and shared tooltips
+Removed the duplicate New board button from YOUR BOARDS, leaving the lower New board action with a divider above it. Removed project-folder three-dot buttons; right-click a folder for Edit project or Remove folder. Shift+F10 also opens project actions. Removing a folder keeps every board and is undoable.
+
+Board right-click menus list existing project folders by name under Move board to. When right-clicking inside a multi-selection, the destination moves the whole selection. All boards moves a selection out of project folders. Existing pointer drag-and-drop remains available. Menus fit the viewport and scroll when many project destinations exist.
+
+Shift-click now selects the full inclusive range in the visible sidebar order, from either direction, including boards between the endpoints outside the scrolled view. The first ordinary click sets the anchor. Ctrl/Command-click toggles individual boards. Collapsed project contents are excluded until expanded.
+
+Formatting (Bold, Italic, Underline, Highlight) and all alignment controls use the shared white tooltip. Board-menu actions, project-menu actions and project-editor buttons use it too. Tooltip placement supports dialog top layers, so tooltips remain visible within the project editor. Updated the guide to explain range selection and menu-based project moves.
+
+Browser checks: all 22 boards selected by bottom-to-top Shift-click; all 22 moved through a named project menu and restored with Undo; three selected boards dragged into a project and undone; right-click project editor and dialog tooltip visibility; all formatting/alignment tooltip labels present with no native titles; folder removal kept 22 boards and Undo restored the folder. Confirmed the top New board button and project dots are absent. Core, planning and collaboration scripts passed syntax checks.
