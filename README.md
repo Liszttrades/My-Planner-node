@@ -206,3 +206,13 @@ Dark-mode workspace background and sidebar both use #000000.
 
 ## v38 — Canvas control alignment
 Zoom, Fit and the history group share a 34px height. Icons use flex centering and block SVG layout, removing the inline baseline offset. Verified identical top positions and matching icon centers in the browser.
+
+
+## v39 — Reference typography, outline icons and history states
+Uses locally bundled Inter, a 256px desktop sidebar, 14px sidebar labels, 12px zoom text, 32px Zoom/Fit buttons and 28px history buttons inside a 34px group, based on measurements from the reference. Sidebar rows are 32px high. Smaller-screen overrides and pure-black dark surfaces are preserved.
+
+The zoom value is white in dark mode, dark in light mode. Its magnifier-plus, percentage and chevron occupy separate flex items, with pseudo-elements removed to avoid overlapping arrows. Fit, Undo and Redo use Lucide outline geometry. A single white tooltip layer shows labels and shortcuts above the bottom controls and beside toolbar icons. Undo/Redo availability follows meaningful history, with white enabled icons and subdued disabled icons.
+
+Upload the assets/ folder along with the root files. Inter font and license are bundled there, together with the Lucide license. Keep your configured cloud-config.js.
+
+Verified in browser: sidebar width 256px, Inter font declaration, 32px zoom button, exactly two separated zoom SVGs, white percentage in dark mode, empty Undo/Redo disabled, Undo enabled after drawing, Redo enabled after Undo, and shortcut tooltip visibility.
