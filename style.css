@@ -127,3 +127,10 @@ body:not(.dark) #canvas .zoom #zoomLabel{color:#181818}
 #penSettings #penWidth{color:inherit}
 
 #penSettings label{margin:0}#penSettings input{margin-top:0}#penSettings #penHex{height:26px}
+
+/* Stable canvas relationships: only the current card's wires animate. */
+#canvas .edge{animation:none!important;stroke-dasharray:none!important}#canvas .edge.active-flow{stroke-dasharray:10 7!important;--dash-travel:-34;animation:connectionFlow 1.4s linear infinite!important}#canvas .port{animation:none!important}#canvas .node.connection-neighbor,#canvas .node.connected-hover{box-shadow:none}#canvas .zoom #zoomLabel .zoom-value{background:transparent!important;box-shadow:none!important}#boards .board-row{user-select:none;-webkit-user-select:none}#boards .board-select{user-select:none;-webkit-user-select:none}.node img{content-visibility:auto}.node-content{overscroll-behavior:contain;overflow-anchor:none}@media(prefers-reduced-motion:reduce){#canvas .edge.active-flow{animation:none!important}}
+
+#boardDragBadge{position:fixed;z-index:1000;pointer-events:none;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:12px;box-shadow:0 6px 22px #0004}#boardDragBadge[hidden]{display:none}#boards .board-row{cursor:grab;touch-action:none}
+
+#cardMenu [data-card-action=group],#cardMenu [data-card-action=ungroup]{padding-left:10px;display:grid;grid-template-columns:17px minmax(0,1fr);column-gap:10px;justify-items:start}

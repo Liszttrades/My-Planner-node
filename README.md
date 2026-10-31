@@ -224,3 +224,17 @@ Redesigned the pen settings as a compact inspector with a rounded numeric width 
 Color dragging uses pointer capture and coalesces changes into one animation frame. Preferences save on release or commit, without scanning undo history on every pointer movement. Existing drawings retain their own color and width. Keyboard arrows also adjust the color surface.
 
 Verified numeric width and hex entry, saturation/brightness dragging, preference persistence after reload, and drawing with the chosen settings. Upload assets/ and preserve your configured cloud-config.js.
+
+
+## v41 — Stable canvas interactions and board organization
+The zoom percentage has a transparent inner background. Group and Ungroup now have outline icons in the same column as Duplicate, Delete and Lock.
+
+Project dragging uses a pointer gesture with a snapshot of every selected board, a board-count drag badge and a highlighted folder target. Shift-click preserves the initial board. Ctrl+A while the sidebar has focus selects its visible board list. Dropping on All boards moves the selection out of a folder. Each move is one undo step.
+
+Checking tasks updates the clicked row in place. Scroll position, focus and existing images are preserved. Canvas rendering reuses unchanged cards and decoded image elements; changed cards preserve their content scroll. Multiple image uploads render and save as a batch. Large-board entrance animations are skipped.
+
+Connection paths are updated in place instead of recreated on pointer movement. Only connections attached to the current hovered/clicked card animate; during dragging only moved items' connections animate. Other wires stay solid, and neighboring sockets no longer run a continuous pulse. This also keeps hover animation state across connection redraws and undo.
+
+Browser validation: a board with 50 images, a 40-item checklist and independent connection pairs; checklist scrollTop remained 1465 after ticking its last task; the relevant edge used connectionFlow while the independent edge had animation none; three selected boards moved into a project and back out, and undo restored all three. Verified equal menu icon x positions, transparent percentage background, grouping and dragging. JavaScript syntax check passed. Performance improvements reduce repeated work; no FPS or device-wide benchmark is claimed.
+
+Upload all files, including assets/, and preserve your configured cloud-config.js. No hosting or cloud database changes are included.
