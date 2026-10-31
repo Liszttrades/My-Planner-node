@@ -202,3 +202,7 @@ Verified: adding an unchanged note then one Ctrl Z removes it; three strokes the
 
 ## v37 — Pure black background
 Dark-mode workspace background and sidebar both use #000000.
+
+
+## v38 — Canvas control alignment
+Zoom, Fit and the history group share a 34px height. Icons use flex centering and block SVG layout, removing the inline baseline offset. Verified identical top positions and matching icon centers in the browser.
