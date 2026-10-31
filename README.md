@@ -294,3 +294,15 @@ Shift-click now selects the full inclusive range in the visible sidebar order, f
 Formatting (Bold, Italic, Underline, Highlight) and all alignment controls use the shared white tooltip. Board-menu actions, project-menu actions and project-editor buttons use it too. Tooltip placement supports dialog top layers, so tooltips remain visible within the project editor. Updated the guide to explain range selection and menu-based project moves.
 
 Browser checks: all 22 boards selected by bottom-to-top Shift-click; all 22 moved through a named project menu and restored with Undo; three selected boards dragged into a project and undone; right-click project editor and dialog tooltip visibility; all formatting/alignment tooltip labels present with no native titles; folder removal kept 22 boards and Undo restored the folder. Confirmed the top New board button and project dots are absent. Core, planning and collaboration scripts passed syntax checks.
+
+
+## v47 — Bulk board deletion and sidebar organization
+The board context menu and confirmation now keep the entire selected board set. A three-board selection shows Delete 3 boards, removes all three in one operation, and restores them with one Undo. Delete/Backspace while the sidebar is focused opens the same confirmation; text inputs are excluded.
+
+Projects controls now sit below New board at the bottom of the board list. Project names are renamed directly in their row with Enter to save, Escape to cancel, or blur to commit. New projects also start with an inline name field. Removed the old project-edit dialog and its unused styles. The card-type search now has a magnifying-glass icon.
+
+Pinned boards are sorted first within their own project folder. The sidebar options menu offers Organize sidebar → By project / In one list and Sort boards by → Original order / Name A–Z / Recently opened. Pins remain first under each sort. One-list view changes only presentation; folder membership is retained. Organization and sorting preferences persist locally and are preserved during undo. The last-opened timestamp is personal metadata, not shared activity tracking.
+
+Browser verification: selected three boards and deleted/restored the whole set; repeated inside a project containing a 54-card board, restoring all 22 boards and all 54 cards; Delete shortcut correctly showed a two-board confirmation; project inline rename saved and Escape canceled; inline project creation; pinned board first within its folder; one-list view retained 22 boards and By project restored membership; name sorting kept pins first; sidebar preferences survived reload; search SVG present. Clean startup produced no new application errors, and all 199 connections on the 200-card board still matched their sockets. All four JavaScript files passed syntax validation.
+
+Upload sidebar.js along with planning.js, the other root files and assets/. Keep your configured cloud-config.js.
