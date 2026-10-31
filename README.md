@@ -168,3 +168,13 @@ Duplicate now finds a nearby open position with space around existing cards and 
 Locked items must be unlocked before deletion. The context menu shows a disabled Unlock to delete action, and Delete/Backspace use the same check. Mixed selections with any locked item are blocked as a whole. Unlock first, then delete. Undo remains available for successful deletion.
 
 Verified: nonoverlapping duplication, twelve consecutive placement calculations, locked delete menu, keyboard protection, and deletion after unlocking.
+
+
+## v34 — Compact controls, stable tools, sidebar and image clipboard
+Undo and Redo preserve the active Pen, Eraser or Pan tool while clearing unfinished connection mode. Canvas tool buttons are slightly smaller. The zoom control uses vector magnifier/chevron icons; context-menu icons and labels align to the left. Long board names wrap in the header and sidebar instead of being truncated.
+
+The sidebar uses a black background in dark mode, simple outline icons, restrained active rows, and the existing Forma sections. Grid dots use a 0.8px radius with the previous spacing. Desktop styles support 1920×1080 and larger displays while retaining responsive smaller-screen rules; the website is not forced to a fixed pixel canvas.
+
+Ctrl/Command V imports image clipboard files directly into image cards, even when a card editor had focus. Plain-text paste still works normally in text fields. Copied HTML image sources and image URLs are attempted as a fallback. Some remote websites block browser fetches: use the browser's Copy image action rather than Copy image address in that case. Existing open-space image placement is retained.
+
+Verified in browser: draw → Ctrl Z → draw again without changing tools; direct PNG clipboard paste creates an image card; full long title is shown; light/dark sidebar and controls.
