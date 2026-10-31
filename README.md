@@ -264,3 +264,21 @@ The sidebar toggle no longer reintroduces a native title tooltip. Card labels, t
 Canvas pointer movement is coalesced once per animation frame, with the final sample flushed on release. Ink keeps its coalesced point handling. The zoom button only updates its percentage when the value changes, rather than replacing its SVGs on every pan event. View-only saves skip undo-history comparisons. Group gestures cache their card/model references instead of re-querying each item per event, and connection refresh avoids scanning all socket children. Removed duplicate icon initialization, unused edge tracking and the obsolete board-menu click branch.
 
 Validated in browser: 200-card panning preserves positions; grouped move/undo restores all 200 cards; 199 connection endpoints match their sockets. With 22 boards, the list scrolls with padding, all board-menu dots are absent, selection strokes remain inset, and right-click/Shift+F10 expose Rename, Pin, Archive and Delete. Sidebar toggle title is absent; label/title actions show shared tooltips. JavaScript syntax validation passed. These are interaction checks, not a cross-device FPS benchmark.
+
+
+## v45 — Title motion and optional planning tools
+Header Save, Share and Open use the shared white tooltip. Sidebar board names and the header title have no native title tooltip. Long titles animate once from the beginning to the end on hover, hold at the end, and reset on exit. Editing keeps the original plaintext title and hides the horizontal scrollbar. Reduced-motion preference uses an instant end reveal. Restored the left canvas border to match the right.
+
+The lower-right Minimap and Planning tools buttons open optional tools without changing the main canvas layout:
+- Minimap: a canvas-rendered board overview with viewport outline. Click or drag to navigate; arrow keys pan when focused. It draws only while visible, at most once per frame.
+- Views: save, open and delete named board views. Views persist locally and in downloaded board backups; they are personal and are not synchronized through cloud sharing.
+- Details and Tasks: deadline, status and assignee names per card, plus a deadline-sorted task list and status filter. Names are labels and do not send invitations or notifications.
+- Templates: Study plan, Weekly plan, Client project and Business launch add three connected cards in open space as one undoable action.
+- Business details: project client, budget, spent amount and currency, with remaining budget calculated from the two amounts. Project fields and node task metadata are included in optional shared-board documents; backend setup is still required.
+- AI: prepare a checklist, summary or study-question prompt from selected card text. Copy it into a preferred AI service, review its answer, paste it into Forma and add it as a card. No AI API is connected, no inference occurs inside Forma, and no content is sent automatically. Images contribute titles only.
+
+The guide includes a new planning-tools step. Features live in planning.js, separate from the core gesture code. Planning metadata and saved views participate in undo history. Existing image layout observation and card reuse remain enabled.
+
+Browser validation: header and sidebar title motion reaches the exact overflow distance and resets; native board/header title tooltips absent; both canvas borders 1px; all four templates added and undone; task/client/budget values and saved views survived reload; budget undo restored the original amount; AI prompt copy and pasted checklist creation; minimap click navigation; and the 200-card grouped move/undo regression with 199 connection endpoints matched to their sockets. Core, collaboration and planning scripts passed syntax checks. Optional authenticated cloud sync was not live-tested because this preview has no Supabase configuration.
+
+Upload planning.js as well as the root files and assets/ folder. Keep your configured cloud-config.js.
