@@ -238,3 +238,11 @@ Connection paths are updated in place instead of recreated on pointer movement. 
 Browser validation: a board with 50 images, a 40-item checklist and independent connection pairs; checklist scrollTop remained 1465 after ticking its last task; the relevant edge used connectionFlow while the independent edge had animation none; three selected boards moved into a project and back out, and undo restored all three. Verified equal menu icon x positions, transparent percentage background, grouping and dragging. JavaScript syntax check passed. Performance improvements reduce repeated work; no FPS or device-wide benchmark is claimed.
 
 Upload all files, including assets/, and preserve your configured cloud-config.js. No hosting or cloud database changes are included.
+
+
+## v42 — Grouped move undo restores rendered positions
+Fixed stale card coordinates after moving a selection and undoing. Cached card content now excludes x/y, and every render independently synchronizes left, top, width and height from the restored model. Images can stay decoded while their positions change. Checkbox cache updates use the same content key.
+
+Undo cancels obsolete drag/resize/ink gesture snapshots, clears transient motion classes, and immediately updates connection geometry and selection bounds after restoring state.
+
+Browser regression check: Select All on 54 items (50 images), group, drag, undo, redo, and keyboard Ctrl+Z / Ctrl+Shift+Z. All 54 card coordinates matched their recorded starting positions after undo and their moved positions after redo; both independent connection paths matched the starting paths after undo. JavaScript syntax check passed.
