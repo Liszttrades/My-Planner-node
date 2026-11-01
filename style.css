@@ -190,3 +190,6 @@ aside#sidebar{border-right:0}#canvas{border-left:0}#boards{flex:1;max-height:non
 #sidebar .sidebar-actions #newBoard2:hover svg,#sidebar .sidebar-actions #createProject:hover svg{background:color-mix(in srgb,var(--ink) 16%,transparent);transform:rotate(90deg)}
 #sidebar .sidebar-actions #newBoard2 svg,#sidebar .sidebar-actions #createProject svg{transition:transform 180ms ease,background 140ms ease}
 @media(prefers-reduced-motion:reduce){.skeleton-card i,.skeleton-card b,.skeleton-card span,.node-content.image-loading::before{animation:none}#sidebar .sidebar-actions #newBoard2 svg,#sidebar .sidebar-actions #createProject svg{transition:none;transform:none}}
+
+#canvas:has(#startupSkeleton) #world,#canvas:has(#startupSkeleton) #empty{visibility:hidden}
+#startupSkeleton{z-index:3}
