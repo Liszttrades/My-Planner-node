@@ -316,3 +316,21 @@ Board sorting supports original order, name and recently opened, keeping pinned 
 Validation: all four application JavaScript files passed syntax checks. Executed the actual sorting functions against fixtures to verify independent board/project ordering, pins first, archived filtering, restoration of original order and unchanged source arrays. Verified project-sort preference preservation in undo. Browser preview verification was unavailable this pass because browser access was blocked by policy.
 
 Upload the complete archive contents, including sidebar.js, planning.js and assets/. Preserve your configured cloud-config.js.
+
+
+## v49 — Creation button polish
+New board and New project share a restrained bordered surface, compact plus-icon tile, consistent spacing and a subtle pressed-scale animation. Hover changes the surface and border; release eases back to full size. Keyboard focus stays visible, and reduced-motion preferences disable movement. The section divider sits above the action group. Existing creation handlers remain unchanged.
+
+Validation: JavaScript syntax checks and archive integrity checks passed. Browser visual verification remains unavailable due to the browser policy restriction.
+
+
+## v50 — Date sorting, loading feedback and offline shell
+Both sidebar sort menus now offer Date created · newest and Date created · oldest. New boards, imported boards and project folders record creation timestamps. Older items have no recoverable creation date; they remain together in original order (before dated entries in oldest-first order, after them in newest-first order). Pinned boards stay first.
+
+The creation buttons have a stronger tonal hover surface and a short plus-icon turn, while reduced-motion users receive static feedback. Removed the permanent transformed-layer hint on the canvas, canceled residual node/view animations when switching boards, and rounded rendered canvas translations to device pixels without changing stored positions or zoom. These address potential stale rasterization and fractional translation blur; visual confirmation remains outstanding.
+
+A lightweight three-card skeleton appears while the local workspace opens. Pending images get individual breathing placeholders that clear on load or error. Available text is shown immediately; there is no artificial loading delay or skeleton over editable cached text. Image placeholders do not block card editing.
+
+The new sw.js caches the same-origin application shell and bundled font after a successful HTTPS visit. Cached assets are served immediately and refreshed in the background. After caching completes, reopening the same site works offline; board data and imported images remain in IndexedDB and local edits continue to save there. First-ever offline visits cannot work. Cloud sign-in, sharing and synchronization still need a connection. Do not clear site storage if you want to keep local work. Upload sw.js alongside all other files; service workers do not run from file:// URLs.
+
+Validation: all JavaScript syntax checks passed. Executed actual sort functions for date order, pins, unknown historical dates and source-array preservation. Mock service-worker tests verified shell installation, offline cached responses, cache namespace isolation and exclusion of external requests. Browser end-to-end, slow-network loading, offline reopening and font appearance were not visually tested because browser access remains blocked.
