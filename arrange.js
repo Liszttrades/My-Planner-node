@@ -32,8 +32,8 @@ function planCardLayout(units,edges,pattern,obstacles=[]){
   for(const group of groups.values()){const rects=group.members.map(itemRect),x=Math.min(...rects.map(r=>r.x)),y=Math.min(...rects.map(r=>r.y)),unit={...group,x,y,w:Math.max(...rects.map(r=>r.x+r.w))-x,h:Math.max(...rects.map(r=>r.y+r.h))-y};if(group.members.some(n=>chosen.has(n.id))&&group.members.some(n=>n.type!=='drawing')&&!group.members.some(n=>n.locked||n.groupId&&b.nodes.some(other=>other.groupId===n.groupId&&other.locked)))units.push(unit);else obstacles.push(unit)}
   if(!units.length)return toast('Select an unlocked card to arrange');
   const links=b.edges.map(e=>({from:nodeUnit.get(e.from),to:nodeUnit.get(e.to)})),positions=planCardLayout(units,links,$('#arrangePattern').value,obstacles);
-  if(b.arrangeRouting&&!units.some(u=>{const p=positions.get(u.id);return p.x!==u.x||p.y!==u.y})){dialog.close();return toast('Cards are already arranged')}
-  const previous=captureLayoutPositions();remember();b.arrangeRouting=true;for(const u of units){const p=positions.get(u.id);for(const n of u.members){n.x+=p.x-u.x;n.y+=p.y-u.y}}
+  if(!units.some(u=>{const p=positions.get(u.id);return p.x!==u.x||p.y!==u.y})){dialog.close();return toast('Cards are already arranged')}
+  const previous=captureLayoutPositions();remember();for(const u of units){const p=positions.get(u.id);for(const n of u.members){n.x+=p.x-u.x;n.y+=p.y-u.y}}
   dialog.close();render();save();showCardSelection();animateLayoutTransition(previous,()=>revealItems(units.flatMap(u=>u.members.map(n=>n.id))));toast('Cards arranged · Ctrl/⌘ Z to undo');
  };
 })();

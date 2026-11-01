@@ -438,3 +438,7 @@ Increased Arrange spacing to 240 px between columns and 160 px between rows, pre
 Routing is enabled by Arrange and included in that board's undo snapshot, so Undo restores both positions and routing mode. Routes are cached by board geometry and calculated only after motion settles; live gestures use the lightweight curve path. Re-running Arrange on an already positioned board can enable routing without moving cards.
 
 Validation: tested clear curves, blocked curves, long connections with intermediate obstacles, same-column lanes, finite rounded geometry and updated spacing. Verified that undo restores routing and positions together without modifying another board. All script syntax checks and ZIP integrity passed. Browser visual verification remains unavailable.
+
+
+## v65 — Restore manual curved connections
+Removed automatic obstacle routing, same-column routing, its cache and route-generation helpers. Existing boards now use the original cubic curved connectors regardless of any saved routing flag. Connections are neither added nor removed. Card auto-arrangement, wider spacing, animations and independent board histories remain available. All script syntax and archive checks passed; browser visual verification remains unavailable.
