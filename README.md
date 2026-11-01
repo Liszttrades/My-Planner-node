@@ -338,3 +338,9 @@ Validation: all JavaScript syntax checks passed. Executed actual sort functions 
 
 ## v51 — Skeleton on every reload
 The startup skeleton now paints for at least 650 ms after the first workspace render, including fast cached/offline reloads. Card content stays hidden until it clears, so skeletons and real cards do not overlap. Repeated renders do not restart the timer. Per-image loading feedback remains independent. Reduced-motion settings still disable skeleton pulsing. Timer/animation-frame unit checks and JavaScript syntax checks passed; browser visual verification remains unavailable.
+
+
+## v52 — Skeleton motion and compact action buttons
+Startup placeholders now have a soft directional shimmer across their content lines, a staggered 240 ms entrance and a 140 ms exit fade. The minimum display is 900 ms after two animation frames. Only three placeholder cards animate, independent of the real board size; narrower screens show one. Reduced-motion users receive static placeholders and no exit delay.
+
+New board and New project are now 36 px high, inset by 4 px, with 6 px corners, an 18 px icon tile, 9 px icon-to-label gap and equal horizontal padding. Hover keeps a tonal surface change without rotating the icon. Creation behavior is unchanged. Syntax, startup-timer and archive checks passed; browser visual verification remains unavailable due to the existing browser restriction.

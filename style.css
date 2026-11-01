@@ -168,9 +168,9 @@ aside#sidebar{border-right:0}#canvas{border-left:0}#boards{flex:1;max-height:non
 #boards .sidebar-section-header{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:30px;padding:3px 8px;margin:0;color:var(--muted);font-size:11px;font-weight:500}#boards .sidebar-section-header>span{min-width:0;flex:1}#boards .project-section-divider{border-top:1px solid var(--line);margin-top:12px;padding-top:12px;min-height:42px}#boards .sidebar-section-header [data-sidebar-options]{display:grid;place-items:center;width:24px;min-width:24px;height:24px;min-height:24px;flex:0 0 24px;margin:0;padding:4px;background:transparent;color:var(--muted);border:0;border-radius:5px}#boards .sidebar-section-header [data-sidebar-options]:hover{background:var(--hover);color:var(--ink)}[data-sidebar-options] svg{width:16px;height:16px;fill:currentColor;stroke:currentColor}#sidebar .sidebar-actions .projects-header{padding:0;display:block}#sidebar .sidebar-actions .projects-header #createProject{display:flex;align-items:center;justify-content:flex-start;gap:11px;width:100%;height:38px;padding:10px;font-size:14px;font-weight:500;border-radius:8px;color:var(--ink)}#createProject svg{width:18px;height:18px;min-width:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round}#boards .project-folder-heading>[data-folder-toggle]{font-size:14px;font-weight:500;padding:8px;min-height:34px;border-radius:7px}#boards .project-folder-heading>[data-folder-toggle]:hover{background:#8882}.project-folder{margin-top:2px}@media(max-width:650px){#boards .sidebar-section-header{padding:3px 0;justify-content:center}#boards .sidebar-section-header>span,#createProject span{display:none}#sidebar .sidebar-actions .projects-header #createProject{justify-content:center;padding:10px 0}}
 
 /* Quiet creation controls, with feedback confined to the pressed button. */
-#sidebar .sidebar-actions{border-top:1px solid var(--line);margin-top:8px;padding-top:10px;display:grid;gap:6px;padding-bottom:8px}
-#sidebar .sidebar-actions #newBoard2,#sidebar .sidebar-actions .projects-header #createProject{display:flex;align-items:center;justify-content:flex-start;gap:10px;width:100%;height:40px;min-height:40px;margin:0;padding:8px 10px;border:1px solid color-mix(in srgb,var(--ink) 12%,transparent);border-radius:8px;background:color-mix(in srgb,var(--ink) 4%,var(--panel));color:var(--ink);font-size:13px;font-weight:500;text-align:left;transform:scale(1);transition:background 140ms ease,border-color 140ms ease,transform 160ms cubic-bezier(.2,.8,.2,1)}
-#sidebar .sidebar-actions #newBoard2 svg,#sidebar .sidebar-actions #createProject svg{box-sizing:content-box;width:15px;height:15px;min-width:15px;padding:3px;border-radius:5px;background:color-mix(in srgb,var(--ink) 7%,transparent);fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;flex:none}
+#sidebar .sidebar-actions{border-top:1px solid var(--line);margin-top:8px;padding-top:10px;display:grid;gap:5px;padding-bottom:10px}
+#sidebar .sidebar-actions #newBoard2,#sidebar .sidebar-actions .projects-header #createProject{display:flex;align-items:center;justify-content:flex-start;gap:9px;width:calc(100% - 8px);height:36px;min-height:36px;margin:0 4px;padding:7px 10px;border:1px solid color-mix(in srgb,var(--ink) 10%,transparent);border-radius:6px;background:color-mix(in srgb,var(--ink) 4%,var(--panel));color:var(--ink);font-size:13px;font-weight:500;text-align:left;transform:scale(1);transition:background 140ms ease,border-color 140ms ease,transform 160ms cubic-bezier(.2,.8,.2,1)}
+#sidebar .sidebar-actions #newBoard2 svg,#sidebar .sidebar-actions #createProject svg{box-sizing:content-box;width:14px;height:14px;min-width:14px;padding:2px;border-radius:4px;background:color-mix(in srgb,var(--ink) 7%,transparent);fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;flex:none}
 #sidebar .sidebar-actions #newBoard2:hover,#sidebar .sidebar-actions .projects-header #createProject:hover{background:color-mix(in srgb,var(--ink) 8%,var(--panel));border-color:color-mix(in srgb,var(--ink) 24%,transparent)}
 #sidebar .sidebar-actions #newBoard2:active,#sidebar .sidebar-actions .projects-header #createProject:active{transform:scale(.975);background:color-mix(in srgb,var(--ink) 13%,var(--panel));transition-duration:70ms}
 #sidebar .sidebar-actions #newBoard2:focus-visible,#sidebar .sidebar-actions #createProject:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
@@ -179,9 +179,9 @@ aside#sidebar{border-right:0}#canvas{border-left:0}#boards{flex:1;max-height:non
 
 /* Loading feedback stays local to content that is not ready. */
 #startupSkeleton{position:absolute;inset:0;pointer-events:none;display:flex;align-items:center;justify-content:center;gap:28px;padding:32px;color:var(--muted)}
-.skeleton-card{width:240px;max-width:28%;height:205px;border:1px solid var(--line);border-radius:9px;padding:18px;background:var(--panel)}
-.skeleton-card:nth-child(2){margin-top:90px}.skeleton-card:nth-child(3){margin-top:-70px}
-.skeleton-card i,.skeleton-card b,.skeleton-card span{display:block;height:10px;border-radius:3px;background:color-mix(in srgb,var(--ink) 9%,var(--panel));animation:card-breathe 1.6s ease-in-out infinite}
+.skeleton-card{width:240px;max-width:28%;height:205px;border:1px solid var(--line);border-radius:10px;padding:18px;background:var(--panel);animation:skeleton-arrive 240ms cubic-bezier(.2,.7,.2,1) both}
+.skeleton-card:nth-child(2){margin-top:90px;animation-delay:65ms}.skeleton-card:nth-child(3){margin-top:-70px;animation-delay:130ms}
+.skeleton-card i,.skeleton-card b,.skeleton-card span{display:block;height:10px;border-radius:3px;background:linear-gradient(105deg,color-mix(in srgb,var(--ink) 7%,var(--panel)) 25%,color-mix(in srgb,var(--ink) 16%,var(--panel)) 45%,color-mix(in srgb,var(--ink) 7%,var(--panel)) 65%);background-size:240% 100%;animation:skeleton-sweep 1.15s linear infinite}
 .skeleton-card i{width:26%;height:8px;margin-bottom:28px}.skeleton-card b{width:65%;height:17px;margin-bottom:21px}.skeleton-card span{margin:12px 0}.skeleton-card span:last-child{width:62%}
 .skeleton-caption{position:absolute;bottom:24%;font-size:12px}
 .node-content.image-loading{position:relative}.node-content.image-loading::before{content:'';position:absolute;inset:0 0 auto;height:180px;border-radius:3px;background:color-mix(in srgb,var(--note-ink) 10%,transparent);animation:card-breathe 1.6s ease-in-out infinite;pointer-events:none}.image-pending{min-height:180px;opacity:0}
@@ -193,3 +193,12 @@ aside#sidebar{border-right:0}#canvas{border-left:0}#boards{flex:1;max-height:non
 
 #canvas:has(#startupSkeleton) #world,#canvas:has(#startupSkeleton) #empty{visibility:hidden}
 #startupSkeleton{z-index:3}
+
+@keyframes skeleton-sweep{from{background-position:160% 0}to{background-position:-80% 0}}
+@keyframes skeleton-arrive{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+#startupSkeleton{transition:opacity 140ms ease}
+#startupSkeleton.skeleton-leaving{opacity:0}
+#sidebar .sidebar-actions #newBoard2:hover svg,#sidebar .sidebar-actions #createProject:hover svg{transform:none}
+@media(max-width:650px){#sidebar .sidebar-actions #newBoard2,#sidebar .sidebar-actions .projects-header #createProject{padding:7px 0}}
+@media(max-width:540px){#startupSkeleton{gap:14px;padding:20px}.skeleton-card{max-width:none;width:min(260px,80%)}.skeleton-card:nth-child(n+2){display:none}.skeleton-caption{bottom:18%}}
+@media(prefers-reduced-motion:reduce){.skeleton-card{animation:none}#startupSkeleton{transition:none}.skeleton-card i,.skeleton-card b,.skeleton-card span{animation:none;background:color-mix(in srgb,var(--ink) 10%,var(--panel))}}

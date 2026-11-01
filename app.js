@@ -444,4 +444,4 @@ function prepareImageLoading(img){if(img.complete){finishImageLoading(img);retur
 if('serviceWorker' in navigator&&location.protocol!=='file:'){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))}
 
 // Allow the startup placeholder to paint on every reload, including cached loads.
-function finishStartupLoading(){const skeleton=document.getElementById('startupSkeleton');if(!skeleton||skeleton.dataset.finishing)return;skeleton.dataset.finishing='true';$('#canvas').setAttribute('aria-busy','true');requestAnimationFrame(()=>requestAnimationFrame(()=>setTimeout(()=>{skeleton.remove();$('#canvas').removeAttribute('aria-busy')},650)))}
+function finishStartupLoading(){const skeleton=document.getElementById('startupSkeleton');if(!skeleton||skeleton.dataset.finishing)return;skeleton.dataset.finishing='true';$('#canvas').setAttribute('aria-busy','true');requestAnimationFrame(()=>requestAnimationFrame(()=>setTimeout(()=>{skeleton.classList.add('skeleton-leaving');setTimeout(()=>{skeleton.remove();$('#canvas').removeAttribute('aria-busy')},reduced()?0:140)},900)))}
