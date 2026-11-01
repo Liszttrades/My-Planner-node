@@ -414,3 +414,11 @@ Board-list operations have a separate workspace history: create/import/delete bo
 Restoring a sidebar snapshot merges list metadata into existing boards, preserving their latest content, view, cloud state and personal timestamps. Missing/deleted boards restore with their saved content, and their session content-history stack remains available. Content undo never restores an entire workspace snapshot, switches the active board, or changes unrelated boards. Image history assets are retained across every scoped history stack.
 
 Validation: ran actual scoped snapshot and history restoration functions through edits on two boards, empty-stack undo, independent redo, a new edit on one board while another retained redo, sidebar deletion/restore, restored-board history and sidebar move/pin reversal while preserving later content edits. All script syntax checks and ZIP checks passed. Browser button/keyboard integration remains unverified due to the continuing browser access restriction.
+
+
+## v62 — Anchored curved rotation arrows
+Removed the top rotation button for individual drawings and drawing-only groups. Each outside corner rotation zone now contains a neutral, solid curved double-headed arrow inspired by the reference. The arrow is hidden until that zone is hovered or keyboard-focused; the initiating corner retains its arrow for the full drag, even when the pointer moves away. Other corner arrows stay hidden while a rotation is active. Arrows remain attached to their drawing/group bounds rather than following the mouse.
+
+Removed the custom rotation cursor asset and its cache entry. The pointer uses standard grab/grabbing feedback while the icon stays on the corner. Existing point-based rotation, per-board Undo/Redo, keyboard rotation, locked-item restrictions and Shift snapping remain unchanged.
+
+Validation: tested creation of four inline arrow zones, removal of both top-button implementations, held-state cleanup/canceled animation-frame handling, and absence of cursor-asset styling. Re-ran independent board/sidebar history tests. All JavaScript syntax and complete archive integrity checks passed. Browser visual/pointer confirmation remains unavailable.
