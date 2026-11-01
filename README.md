@@ -430,3 +430,11 @@ Branching now follows the existing board/card array order and widens by one card
 Updated the branching thumbnail and replaced the oldest/newest language with a direct pattern explanation.
 
 Validation: tested exact column membership for 10 cards, reversed input with explicit board order, conflicting timestamps, unchanged geometry despite reversed connections, source preservation and non-overlap for 1, 2, 10, 11 and 200 cards in each pattern with an obstacle. All JavaScript syntax checks and complete ZIP integrity passed. Browser visual verification remains unavailable.
+
+
+## v64 — More breathing room and automatic connection routing
+Increased Arrange spacing to 240 px between columns and 160 px between rows, preserving the widening 1/2/3/4 branch and stable board order. After Arrange, connection geometry updates along with the cards. Direct adjacent curves remain when clear. Connections that intersect another card reroute through rounded outside lanes; same-column links use a side lane. Existing connections, endpoints and card content are preserved.
+
+Routing is enabled by Arrange and included in that board's undo snapshot, so Undo restores both positions and routing mode. Routes are cached by board geometry and calculated only after motion settles; live gestures use the lightweight curve path. Re-running Arrange on an already positioned board can enable routing without moving cards.
+
+Validation: tested clear curves, blocked curves, long connections with intermediate obstacles, same-column lanes, finite rounded geometry and updated spacing. Verified that undo restores routing and positions together without modifying another board. All script syntax checks and ZIP integrity passed. Browser visual verification remains unavailable.
