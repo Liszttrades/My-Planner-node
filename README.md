@@ -344,3 +344,9 @@ The startup skeleton now paints for at least 650 ms after the first workspace re
 Startup placeholders now have a soft directional shimmer across their content lines, a staggered 240 ms entrance and a 140 ms exit fade. The minimum display is 900 ms after two animation frames. Only three placeholder cards animate, independent of the real board size; narrower screens show one. Reduced-motion users receive static placeholders and no exit delay.
 
 New board and New project are now 36 px high, inset by 4 px, with 6 px corners, an 18 px icon tile, 9 px icon-to-label gap and equal horizontal padding. Hover keeps a tonal surface change without rotating the icon. Creation behavior is unchanged. Syntax, startup-timer and archive checks passed; browser visual verification remains unavailable due to the existing browser restriction.
+
+
+## v53 — Balanced button text and alignment-menu contrast
+Removed the legacy newboard styling class from the lower creation button. That class forced a different font size through older !important rules. Both actions now share an explicit 14 px font, weight 500, 20 px line height and normal letter spacing, preserving their matching 36 px heights and padding.
+
+Alignment popup buttons inherit the popup foreground rather than the note's --note-ink. A white note in dark mode therefore keeps readable light alignment icons on the dark popup. Hover, pressed and keyboard-focus states use that same foreground, while the main formatting toolbar continues to follow the note color. JavaScript syntax and targeted stylesheet/source checks passed. Visual browser verification remains unavailable.
