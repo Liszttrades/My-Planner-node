@@ -258,3 +258,13 @@ aside#sidebar{border-right:0}#canvas{border-left:0}#boards{flex:1;max-height:non
 .node.content-scaled{min-width:160px}
 .node.content-scaled:not(.image){min-height:calc(220px * var(--content-scale))}
 .node.content-scaled .node-content{min-height:calc(105px * var(--content-scale))}
+
+/* Use one repainted border, rather than an SVG-adjacent outline during resize. */
+.node.drawing.selected{outline:none!important}
+.node.drawing.selected::before{content:'';display:block!important;position:absolute;inset:-6px;border:1px solid #8d9aa7;pointer-events:none;background:none!important}
+.node.drawing.resizing{will-change:auto;transition:none!important;animation:none!important}
+.drawing .drawing-rotate,.drawing-group-rotate{position:absolute;top:-37px;left:50%;transform:translateX(-50%);display:none;width:25px;height:25px;padding:0;border:1px solid var(--line);border-radius:50%;background:var(--panel);color:var(--ink);font:18px/23px sans-serif;cursor:grab;pointer-events:auto;z-index:8;touch-action:none}
+.drawing.selected:not(.position-locked) .drawing-rotate{display:block}
+#groupBounds.ink-group:not(.contains-locked) .drawing-group-rotate{display:block}
+#groupBounds.ink-group~#nodes .drawing.selected .drawing-rotate{display:none}
+.drawing-rotate:active,.drawing-group-rotate:active{cursor:grabbing;transform:translateX(-50%)}
