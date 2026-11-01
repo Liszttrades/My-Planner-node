@@ -238,16 +238,16 @@ aside#sidebar{border-right:0}#canvas{border-left:0}#boards{flex:1;max-height:non
 .node-exit{pointer-events:none!important;z-index:2;transform-origin:center}
 .node-exit *{pointer-events:none!important}
 .edge-exit{fill:none;stroke:#999;stroke-width:1.6;pointer-events:none}
-.node.content-scaled .handle{height:calc(38px * var(--content-scale));padding-left:calc(16px * var(--content-scale));padding-right:calc(12px * var(--content-scale))}
-.node.content-scaled .card-label{font-size:calc(12px * var(--content-scale))}
-.node.content-scaled .node-content{padding:calc(10px * var(--content-scale)) calc(20px * var(--content-scale)) calc(20px * var(--content-scale))}
-.node.image.content-scaled .node-content{padding:0}
-.node.content-scaled h2{font-size:calc(24px * var(--content-scale));margin-top:calc(6px * var(--content-scale));margin-bottom:calc(10px * var(--content-scale))}
-.node.content-scaled .rich-note,.node.content-scaled .task,.node.content-scaled .live-body{font-size:calc(19px * var(--content-scale))}
-.node.content-scaled .task input[type=checkbox]{width:calc(20px * var(--content-scale));height:calc(20px * var(--content-scale));flex-basis:calc(20px * var(--content-scale))}
-.node.content-scaled .task input[type=checkbox]::after{width:calc(5px * var(--content-scale));height:calc(9px * var(--content-scale))}
-.node.image.content-scaled h2{font-size:calc(19px * var(--content-scale));padding:calc(16px * var(--content-scale)) calc(20px * var(--content-scale))}
-.node.content-scaled .planning-meta{font-size:calc(11px * var(--content-scale))}
+
+
+
+
+
+
+
+
+
+
 #arrangeDialog .arrange-scope-picker{position:relative}
 #arrangeDialog #arrangeScopeToggle{display:flex;align-items:center;justify-content:space-between;width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:7px;background:var(--panel);color:var(--ink);font-size:13px;font-weight:400}
 #arrangeScopeToggle[aria-expanded=true]{border-color:var(--muted)!important}
@@ -255,9 +255,9 @@ aside#sidebar{border-right:0}#canvas{border-left:0}#boards{flex:1;max-height:non
 #arrangeScopeList[hidden]{display:none}
 #arrangeScopeList button{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;padding:10px;border-radius:5px;font-size:13px;font-weight:400;text-align:left}
 #arrangeScopeList button:hover,#arrangeScopeList button:focus-visible,#arrangeScopeList button[aria-selected=true]{background:var(--hover);outline-offset:-2px}
-.node.content-scaled{min-width:160px}
-.node.content-scaled:not(.image){min-height:calc(220px * var(--content-scale))}
-.node.content-scaled .node-content{min-height:calc(105px * var(--content-scale))}
+
+
+
 
 /* Use one repainted border, rather than an SVG-adjacent outline during resize. */
 .node.drawing.selected{outline:none!important}
@@ -268,3 +268,17 @@ aside#sidebar{border-right:0}#canvas{border-left:0}#boards{flex:1;max-height:non
 #groupBounds.ink-group:not(.contains-locked) .drawing-group-rotate{display:block}
 #groupBounds.ink-group~#nodes .drawing.selected .drawing-rotate{display:none}
 .drawing-rotate:active,.drawing-group-rotate:active{cursor:grabbing;transform:translateX(-50%)}
+
+/* Rotation starts outside the resize corners, leaving their hit targets distinct. */
+.drawing .drawing-rotate-zone,#groupBounds .drawing-rotate-zone{position:absolute;display:none;z-index:9;width:24px;height:24px;min-width:24px;min-height:24px;margin:0;padding:0;border:0;border-radius:50%;background:transparent;color:transparent;box-shadow:none;touch-action:none;cursor:url("assets/rotate-cursor.svg") 16 16,crosshair;pointer-events:auto}
+.drawing.selected:not(.position-locked) .drawing-rotate-zone,#groupBounds.ink-group:not(.contains-locked) .drawing-rotate-zone{display:block}
+.drawing .drawing-rotate-zone:hover,#groupBounds .drawing-rotate-zone:hover{background:#8882}
+.drawing-rotate-zone.rotate-zone-nw{left:-30px;top:-30px}
+.drawing-rotate-zone.rotate-zone-ne{right:-30px;top:-30px}
+.drawing-rotate-zone.rotate-zone-sw{left:-30px;bottom:-30px}
+.drawing-rotate-zone.rotate-zone-se{right:-30px;bottom:-30px}
+#groupBounds.ink-group~#nodes .drawing.selected .drawing-rotate-zone{display:none}
+.drawing .drawing-rotate,.drawing-group-rotate{cursor:url("assets/rotate-cursor.svg") 16 16,crosshair}
+.drawing .drawing-rotate:active,.drawing-group-rotate:active{cursor:url("assets/rotate-cursor.svg") 16 16,crosshair}
+
+#canvas.rotating-drawing,#canvas.rotating-drawing *{cursor:url("assets/rotate-cursor.svg") 16 16,crosshair!important}
