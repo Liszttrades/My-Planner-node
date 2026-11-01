@@ -442,3 +442,7 @@ Validation: tested clear curves, blocked curves, long connections with intermedi
 
 ## v65 — Restore manual curved connections
 Removed automatic obstacle routing, same-column routing, its cache and route-generation helpers. Existing boards now use the original cubic curved connectors regardless of any saved routing flag. Connections are neither added nor removed. Card auto-arrangement, wider spacing, animations and independent board histories remain available. All script syntax and archive checks passed; browser visual verification remains unavailable.
+
+
+## v66 — Minimal rotation icon
+Replaced the filled rotation arrow with a 24-unit outline icon, using the toolbar's 1.6-unit stroke, rounded caps and rounded joins. Balanced its display size at 22 px within the existing corner hit area. Hover visibility, corner anchoring, held state and Shift snapping remain unchanged. Source and syntax checks passed; browser visual verification remains unavailable.

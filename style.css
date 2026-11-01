@@ -266,7 +266,7 @@ aside#sidebar{border-right:0}#canvas{border-left:0}#boards{flex:1;max-height:non
 /* The arrow belongs to the corner, never to the pointer. */
 .drawing .drawing-rotate-zone,#groupBounds .drawing-rotate-zone{position:absolute;display:none;z-index:9;width:30px;height:30px;min-width:30px;min-height:30px;margin:0;padding:2px;border:0;border-radius:4px;background:transparent;color:var(--ink);box-shadow:none;touch-action:none;cursor:grab;pointer-events:auto}
 .drawing.selected:not(.position-locked) .drawing-rotate-zone,#groupBounds.ink-group:not(.contains-locked) .drawing-rotate-zone{display:block}
-.drawing-rotate-zone svg{display:block;width:26px;height:26px;fill:currentColor;stroke:none;opacity:0;transition:opacity 100ms ease;pointer-events:none}
+.drawing-rotate-zone svg{display:block;width:22px;height:22px;margin:2px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:0;transition:opacity 100ms ease;pointer-events:none}
 .drawing-rotate-zone:hover svg,.drawing-rotate-zone:focus-visible svg,.drawing-rotate-zone.rotation-held svg{opacity:1}
 .drawing-rotate-zone.rotate-zone-nw{left:-35px;top:-35px}
 .drawing-rotate-zone.rotate-zone-ne{right:-35px;top:-35px}
