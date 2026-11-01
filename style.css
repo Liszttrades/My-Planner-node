@@ -230,3 +230,31 @@ aside#sidebar{border-right:0}#canvas{border-left:0}#boards{flex:1;max-height:non
 .layout-moving #groupBounds{visibility:hidden;pointer-events:none}
 
 #arrangeDialog label[hidden]{display:none}.arrange-patterns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;border:0;padding:0;margin:20px 0}.arrange-patterns legend{font-size:12px;font-weight:500;margin-bottom:10px}.arrange-patterns button{display:grid;justify-items:center;gap:7px;padding:12px 6px 10px;border:1px solid var(--line);border-radius:7px;background:transparent;color:var(--muted);font-size:12px}.arrange-patterns svg{width:74px;max-width:100%;height:50px;fill:none;stroke:currentColor;stroke-width:1.5}.arrange-patterns button[aria-pressed=true]{border-color:var(--ink);background:var(--hover);color:var(--ink)}.arrange-patterns button:hover{background:var(--hover);color:var(--ink)}
+
+/* Mixed selections share the same proportional resize handles. */
+#groupBounds:not([hidden]):not(.contains-locked) .group-corner{display:block!important;pointer-events:auto!important}
+#groupBounds.contains-locked .group-corner{display:none!important}
+.node{transform-origin:top left}
+.node-exit{pointer-events:none!important;z-index:2;transform-origin:center}
+.node-exit *{pointer-events:none!important}
+.edge-exit{fill:none;stroke:#999;stroke-width:1.6;pointer-events:none}
+.node.content-scaled .handle{height:calc(38px * var(--content-scale));padding-left:calc(16px * var(--content-scale));padding-right:calc(12px * var(--content-scale))}
+.node.content-scaled .card-label{font-size:calc(12px * var(--content-scale))}
+.node.content-scaled .node-content{padding:calc(10px * var(--content-scale)) calc(20px * var(--content-scale)) calc(20px * var(--content-scale))}
+.node.image.content-scaled .node-content{padding:0}
+.node.content-scaled h2{font-size:calc(24px * var(--content-scale));margin-top:calc(6px * var(--content-scale));margin-bottom:calc(10px * var(--content-scale))}
+.node.content-scaled .rich-note,.node.content-scaled .task,.node.content-scaled .live-body{font-size:calc(19px * var(--content-scale))}
+.node.content-scaled .task input[type=checkbox]{width:calc(20px * var(--content-scale));height:calc(20px * var(--content-scale));flex-basis:calc(20px * var(--content-scale))}
+.node.content-scaled .task input[type=checkbox]::after{width:calc(5px * var(--content-scale));height:calc(9px * var(--content-scale))}
+.node.image.content-scaled h2{font-size:calc(19px * var(--content-scale));padding:calc(16px * var(--content-scale)) calc(20px * var(--content-scale))}
+.node.content-scaled .planning-meta{font-size:calc(11px * var(--content-scale))}
+#arrangeDialog .arrange-scope-picker{position:relative}
+#arrangeDialog #arrangeScopeToggle{display:flex;align-items:center;justify-content:space-between;width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:7px;background:var(--panel);color:var(--ink);font-size:13px;font-weight:400}
+#arrangeScopeToggle[aria-expanded=true]{border-color:var(--muted)!important}
+#arrangeScopeList{position:absolute;top:calc(100% + 5px);left:0;right:0;z-index:4;padding:5px;border:1px solid var(--line);border-radius:8px;background:var(--panel);box-shadow:0 8px 24px #0004}
+#arrangeScopeList[hidden]{display:none}
+#arrangeScopeList button{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;padding:10px;border-radius:5px;font-size:13px;font-weight:400;text-align:left}
+#arrangeScopeList button:hover,#arrangeScopeList button:focus-visible,#arrangeScopeList button[aria-selected=true]{background:var(--hover);outline-offset:-2px}
+.node.content-scaled{min-width:160px}
+.node.content-scaled:not(.image){min-height:calc(220px * var(--content-scale))}
+.node.content-scaled .node-content{min-height:calc(105px * var(--content-scale))}
