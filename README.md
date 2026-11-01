@@ -350,3 +350,11 @@ New board and New project are now 36 px high, inset by 4 px, with 6 px corners, 
 Removed the legacy newboard styling class from the lower creation button. That class forced a different font size through older !important rules. Both actions now share an explicit 14 px font, weight 500, 20 px line height and normal letter spacing, preserving their matching 36 px heights and padding.
 
 Alignment popup buttons inherit the popup foreground rather than the note's --note-ink. A white note in dark mode therefore keeps readable light alignment icons on the dark popup. Hover, pressed and keyboard-focus states use that same foreground, while the main formatting toolbar continues to follow the note color. JavaScript syntax and targeted stylesheet/source checks passed. Visual browser verification remains unavailable.
+
+
+## v54 — Copy selected canvas content between boards
+Click the canvas, select all with Ctrl/Command+A, copy with Ctrl/Command+C, open another board, click its empty canvas and paste with Ctrl/Command+V. Partial selections work too. Native text copy/paste remains available while editing a note, board title or input.
+
+Clipboard data includes note formatting, image data, checklist checks, drawing points, card positions and dimensions, groups, task metadata and connections whose two endpoints are selected. Pasting remaps node, edge and group IDs, retains relative layout, places copies outside existing cards and reveals the result. An empty board keeps the copied coordinates. Paste is one undoable operation; original cards remain unchanged. Browser clipboard events work without a network connection. Data is validated and rich HTML sanitized before insertion.
+
+Validation: syntax checks and actual clipboard helper tests cover mixed content, group remapping, internal edges only, unique IDs, original-data preservation, offsets and malformed input. Browser keyboard/clipboard integration remains unverified because browser access is unavailable.
