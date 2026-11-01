@@ -138,7 +138,7 @@
     }
     if(!canWrite())body.querySelectorAll('#taskStatus,#taskDue,#taskAssignee,#projectClient,#projectBudget,#projectCurrency,#projectSpent,#viewName,.planning-primary:not(#copyAIPrompt),[data-template],[data-delete-view],#aiResponse,#addAIResult').forEach(el=>el.disabled=true);
   }
-  function makeCard(type,title,bodyText,pos) { return {id:uid(),type,title,body:bodyText,color:state.dark?'neutral':'white',w:360,x:pos.x,y:pos.y}; }
+  function makeCard(type,title,bodyText,pos) { return {id:uid(),createdAt:Date.now(),type,title,body:bodyText,color:state.dark?'neutral':'white',w:360,x:pos.x,y:pos.y}; }
   const templates = {
     study:{title:'Study plan',description:'Subjects, study blocks and revision.',cards:[['note','Learning goals','What do you need to understand?'],['checklist','Study sessions','Choose a topic\nRead and take notes\nPractise questions'],['checklist','Exam preparation','Review weak areas\nComplete a practice test\nPlan final revision']]},
     week:{title:'Weekly plan',description:'A clear focus and a manageable week.',cards:[['note','This week’s focus','What matters most this week?'],['checklist','Priorities','First priority\nSecond priority\nThird priority'],['note','Weekly review','What worked?\nWhat needs to change?']]},
