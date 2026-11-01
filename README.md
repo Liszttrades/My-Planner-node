@@ -422,3 +422,11 @@ Removed the top rotation button for individual drawings and drawing-only groups.
 Removed the custom rotation cursor asset and its cache entry. The pointer uses standard grab/grabbing feedback while the icon stays on the corner. Existing point-based rotation, per-board Undo/Redo, keyboard rotation, locked-item restrictions and Shift snapping remain unchanged.
 
 Validation: tested creation of four inline arrow zones, removal of both top-button implementations, held-state cleanup/canceled animation-frame handling, and absence of cursor-asset styling. Re-ran independent board/sidebar history tests. All JavaScript syntax and complete archive integrity checks passed. Browser visual/pointer confirmation remains unavailable.
+
+
+## v63 — Ordered widening branches
+Branching now follows the existing board/card array order and widens by one card per column: 1 | 2,3 | 4,5,6 | 7,8,9,10. Columns are vertically centered around the first card, with spacing based on actual card dimensions. Ten cards form four columns containing 1, 2, 3 and 4 cards. Partial final columns work for any total. Creation timestamps and connection topology no longer determine placement. Connections remain unchanged; Arrange does not create or remove them. Grid and vertical also follow board order. Locked/unselected content remains an obstacle; existing animation and per-board undo remain in place.
+
+Updated the branching thumbnail and replaced the oldest/newest language with a direct pattern explanation.
+
+Validation: tested exact column membership for 10 cards, reversed input with explicit board order, conflicting timestamps, unchanged geometry despite reversed connections, source preservation and non-overlap for 1, 2, 10, 11 and 200 cards in each pattern with an obstacle. All JavaScript syntax checks and complete ZIP integrity passed. Browser visual verification remains unavailable.
