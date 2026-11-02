@@ -466,3 +466,7 @@ Neutral editor dock on every card color; compact font and size controls; color p
 
 ### v69 — Compact typography inspector
 Circular card and text color swatches. Text options can expand or collapse with a divider; consistent bordered buttons, aligned font and size controls, and a compact custom color row. Font menus have selected-font checkmarks and a subtle entrance animation, respecting reduced motion. Independent menu scrolling and saved text selection remain intact.
+
+
+### v70 — Clean writing and custom colors
+Removed the Text options heading and collapse UI. Formatting uses a compact dock outside the writing area, matching the card background and ink; it moves above the card when there is insufficient room below. Opening the editor places the caret at the end of the body and scrolls it into view; title renaming remains available separately. Replaced text/highlight glyphs with outlined SVG icons. Font menus use consistent compact rows and a thin arrow-free scrollbar. Color panels align with the card/dock and offer a custom saturation/brightness surface, hue slider, hex input and Apply, without the browser-native color dialog.
