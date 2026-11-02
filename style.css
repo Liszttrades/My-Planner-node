@@ -452,3 +452,4 @@ aside#sidebar{border-right:0}#canvas{border-left:0}#boards{flex:1;max-height:non
 @keyframes formatDockIn{from{opacity:0;translate:0 5px}to{opacity:1;translate:0 0}}
 @media(max-width:650px){#textFormattingDock.live-controls[data-rich-tools]{bottom:60px;width:336px;padding:8px}#textFormattingDock .live-actions{gap:3px}#textFormattingDock .live-actions>button,#textFormattingDock .text-color-picker>summary{width:30px;min-width:30px;height:30px;min-height:30px}}
 @media(prefers-reduced-motion:reduce){#textFormattingDock.live-controls[data-rich-tools]{animation:none}}
+#cardMenu [data-card-action=duplicate] kbd{margin-left:auto;font:400 10px Inter,Arial,sans-serif;color:var(--muted);white-space:nowrap}

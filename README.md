@@ -474,3 +474,7 @@ Removed the Text options heading and collapse UI. Formatting uses a compact dock
 
 ### v71 — Bottom-centered formatting toolbar
 Text formatting is a single compact toolbar at the bottom center of the canvas, outside the zoomed world. Double-click a note or description to edit and reveal it; creating a text card no longer opens the editor automatically. Clicking outside or ending editing removes the toolbar. Font, size, emphasis, text/highlight color, lists and alignment use consistent controls and outlined SVG icons. Menus open above the toolbar and stay within the viewport. The writing area remains unchanged.
+
+
+### v72 — Duplicate shortcut and formatted title renaming
+Ctrl+D (Cmd+D on macOS) duplicates the canvas selection using the same action as the card menu, preserving card content, rich titles, images, groups and internal connections with new IDs. It is inactive while typing or using the sidebar or a dialog. Note and description title renaming now opens the bottom text toolbar and retains the original title color/font/size when replacing selected title text. Enter commits; Escape restores the previous title.
