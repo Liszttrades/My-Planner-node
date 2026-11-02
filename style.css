@@ -358,3 +358,49 @@ aside#sidebar{border-right:0}#canvas{border-left:0}#boards{flex:1;max-height:non
 .board-search-field:focus-within{border-color:var(--muted)}#boardSearch input::placeholder{color:var(--muted);opacity:1}
 #boardSearch .search-results:empty{display:none}
 .rich-note mark,.live-body mark,.node h2 mark,.rich-note [style*="background-color"],.live-body [style*="background-color"],.node h2 [style*="background-color"]{border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+/* Compact, collapsible typography inspector. */
+#sidePalette .palette-swatch{border-radius:50%;width:25px;height:25px}
+.node .live-controls[data-rich-tools]{padding:0 10px 10px;gap:0}
+.live-controls[data-rich-tools] .text-options-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;height:34px;min-height:34px;margin:0;padding:0 2px;border:0;border-radius:0;background:transparent!important;box-shadow:none;color:var(--muted)!important;font:500 11px/1.2 Inter,Arial,sans-serif;text-align:left}
+.text-options-toggle svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:transform .18s ease}
+.text-options-collapsed .text-options-toggle svg{transform:rotate(180deg)}
+.text-options-body{display:grid;grid-template-rows:1fr;opacity:1;transition:grid-template-rows .2s ease,opacity .15s ease}
+.text-options-inner{min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--line);padding-top:9px;transition:padding .2s ease,border-color .2s ease}
+.text-options-collapsed .text-options-body{grid-template-rows:0fr;opacity:0;pointer-events:none}
+.text-options-collapsed .text-options-inner{padding-top:0;border-color:transparent}
+.node .live-controls[data-rich-tools].text-options-collapsed{padding-bottom:0}
+.node.editing:has(.live-controls.text-options-collapsed){min-height:220px}
+.live-controls[data-rich-tools] .text-tools-row{display:grid;grid-template-columns:minmax(0,1fr) 96px;gap:8px;align-items:center}
+.live-controls[data-rich-tools] .text-font-picker{min-width:0}
+.live-controls[data-rich-tools] .text-font-picker>summary{width:100%;box-sizing:border-box;height:32px;min-height:32px;padding:6px 9px;border-radius:7px;background:var(--hover);border:1px solid var(--line);font-weight:500}
+.text-font-picker>summary>span:last-child{font-size:16px;line-height:1;transition:transform .16s ease}
+.text-font-picker[open]>summary>span:last-child{transform:rotate(180deg)}
+.live-controls[data-rich-tools] .text-size-control{height:32px;box-sizing:border-box;width:96px;justify-content:space-between;border-radius:7px;background:var(--hover)}
+.live-controls[data-rich-tools] .text-size-control input{width:30px;height:28px;font-size:12px}
+.live-controls[data-rich-tools] .text-size-control button{min-width:25px;width:25px;height:26px;min-height:26px;border-radius:4px}
+.live-controls[data-rich-tools] .live-actions{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.live-controls[data-rich-tools] .live-actions>button,.live-controls[data-rich-tools] .text-color-picker>summary,.live-controls[data-rich-tools] .text-align-picker>summary{box-sizing:border-box;min-width:30px;width:30px;height:30px;min-height:30px;padding:4px;border:1px solid var(--line);background:var(--hover);border-radius:6px;box-shadow:0 1px 1px #0001;transition:background .12s,border-color .12s,transform .12s;font-size:16px}
+.live-controls[data-rich-tools] .text-align-picker>summary{width:45px;gap:2px}
+.live-controls[data-rich-tools] .live-actions>button:hover,.live-controls[data-rich-tools] .live-actions summary:hover{border-color:var(--muted);filter:brightness(1.12)}
+.live-controls[data-rich-tools] .live-actions>button:active,.live-controls[data-rich-tools] .live-actions summary:active{transform:scale(.94)}
+.live-controls[data-rich-tools] .live-actions [aria-pressed=true]{border-color:var(--muted);box-shadow:inset 0 0 0 1px #8884}
+.live-controls[data-rich-tools] .text-color-line{left:6px;right:6px;bottom:3px;height:2px}
+.live-controls[data-rich-tools] .live-actions>button>svg,.live-controls[data-rich-tools] .text-align-picker summary>svg{width:18px;height:18px}
+.text-tool-popover.text-tool-floating{animation:textMenuIn .16s cubic-bezier(.2,.8,.2,1);width:224px;padding:11px;border-radius:9px}
+.text-tool-floating.font-options{width:210px;padding:5px;max-height:min(280px,calc(100dvh - 24px))!important}
+.text-tool-floating.font-options button{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:30px;height:30px;padding:5px 9px;font-size:12px;border-radius:5px}
+.font-option-check{width:14px;height:14px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;opacity:0}
+[aria-selected=true]>.font-option-check{opacity:1}
+.text-tool-floating strong{font-size:11px;margin-bottom:10px}
+.text-tool-floating .text-color-swatches{grid-template-columns:repeat(6,26px);justify-content:space-between;gap:8px;margin-bottom:11px}
+.text-tool-floating .text-color-swatches button{width:26px;height:26px;min-height:26px;border-radius:50%;transition:transform .12s,outline-color .12s}
+.text-tool-floating .text-color-swatches button:active{transform:scale(.91)}
+.text-tool-floating .custom-text-color{grid-template-columns:28px minmax(0,1fr) 44px;gap:6px;padding-top:25px}
+.text-tool-floating .custom-text-color::before{top:7px;font-size:10px}
+.text-tool-floating .custom-text-color input[type=color]{width:28px;height:28px;padding:3px;margin:0;box-sizing:border-box}
+.text-tool-floating .custom-text-color .text-color-hex{height:28px;min-width:0;box-sizing:border-box;font-size:10px;padding:4px 6px;margin:0}
+.text-tool-floating [data-apply-text-color]{height:28px;min-height:28px;box-sizing:border-box;padding:4px 5px;font-size:10px;border-radius:5px}
+.text-tool-floating .text-color-reset{height:28px;min-height:28px;margin-top:8px;padding:5px 7px;font-size:10px;background:var(--hover);border:1px solid var(--line);border-radius:5px;text-align:center}
+.text-tool-floating.text-align-options{width:max-content;padding:5px}
+@keyframes textMenuIn{from{opacity:0;transform:translateY(4px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.text-tool-popover.text-tool-floating{animation:none}.text-options-body,.text-options-inner,.text-options-toggle svg,.text-font-picker>summary>span:last-child{transition:none}}

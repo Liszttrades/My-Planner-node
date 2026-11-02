@@ -462,3 +462,7 @@ Validation: executed the actual sanitizer with a DOM shim against nested lists, 
 
 ### v68 — Balanced text editing controls
 Neutral editor dock on every card color; compact font and size controls; color palettes with square rounded swatches and a custom color row. Font, alignment, and color menus open beside the card when space permits and use viewport-sized controls. Font menus scroll independently of the canvas. Alignment icons track the applied paragraph alignment. Search includes a matching outline magnifier. Thin card and menu scrollbars omit arrow buttons; highlights have subtle rounded corners.
+
+
+### v69 — Compact typography inspector
+Circular card and text color swatches. Text options can expand or collapse with a divider; consistent bordered buttons, aligned font and size controls, and a compact custom color row. Font menus have selected-font checkmarks and a subtle entrance animation, respecting reduced motion. Independent menu scrolling and saved text selection remain intact.
