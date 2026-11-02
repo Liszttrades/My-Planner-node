@@ -320,3 +320,41 @@ aside#sidebar{border-right:0}#canvas{border-left:0}#boards{flex:1;max-height:non
 #addMenu [data-add=description] svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .live-controls details:not([open])>.text-tool-popover{display:none}
 .node.editing:has(.live-controls[data-rich-tools]){min-height:300px}
+/* Neutral editor dock and viewport menus stay distinct from every card color. */
+.node .live-controls[data-rich-tools]{--note-ink:var(--ink);background:var(--panel)!important;color:var(--ink)!important;border-top:1px solid var(--line);padding:10px 12px;gap:8px;border-radius:0 0 8px 8px;box-shadow:0 -1px 0 #00000008}
+.live-controls[data-rich-tools] .text-tools-row{gap:8px}
+.live-controls[data-rich-tools] .text-font-picker>summary{background:var(--bg);border-color:var(--line);border-radius:6px;height:32px;width:145px;color:var(--ink);font-size:12px}
+.live-controls[data-rich-tools] .text-size-control{height:32px;padding:0 2px;border:1px solid var(--line);background:var(--bg);border-radius:6px;gap:1px}
+.live-controls[data-rich-tools] .text-size-control input{border:0;width:34px;height:28px;font-size:12px;color:var(--ink)}
+.live-controls[data-rich-tools] .text-size-control button{width:25px;min-width:25px;height:28px;font-size:16px;color:var(--ink)}
+.live-controls[data-rich-tools] .live-actions{gap:3px}
+.live-controls[data-rich-tools] .live-actions>button,.live-controls[data-rich-tools] summary{color:var(--ink)!important;border-radius:5px}
+.live-controls[data-rich-tools] button:hover,.live-controls[data-rich-tools] summary:hover,.live-controls[data-rich-tools] [aria-pressed=true]{background:var(--hover)!important}
+.text-tool-popover.text-tool-floating{position:fixed;z-index:250;bottom:auto;right:auto;box-sizing:border-box;width:248px;max-width:calc(100vw - 24px);padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);box-shadow:0 8px 24px #0004;overflow:auto;overscroll-behavior:contain;font:12px/1.4 Inter,Arial,sans-serif;transform:none}
+.text-tool-floating strong{font-size:12px;margin:0 0 12px;font-weight:600}
+.text-tool-floating button{font-family:inherit;color:var(--ink);background:transparent;border:0;box-shadow:none;min-height:30px;padding:6px 8px;border-radius:5px;font-size:12px}
+.text-tool-floating button:hover,.text-tool-floating button[aria-selected=true],.text-tool-floating button[aria-pressed=true]{background:var(--hover)}
+.text-tool-floating.font-options{width:200px;max-height:280px!important;padding:5px}
+.text-tool-floating.font-options button{height:34px;text-align:left;padding:7px 10px;font-size:13px}
+.text-tool-floating .text-color-swatches{grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:14px}
+.text-tool-floating .text-color-swatches button{height:27px;min-height:27px;min-width:0;padding:0;background:var(--swatch);border:1px solid #8885;border-radius:6px}
+.text-tool-floating .text-color-swatches button:hover{background:var(--swatch);outline:1px solid var(--ink);outline-offset:2px}
+.text-tool-floating .custom-text-color{display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:7px;align-items:end;padding-top:28px;position:relative}
+.text-tool-floating .custom-text-color label{font-size:0;gap:0}
+.text-tool-floating .custom-text-color::before{content:'Custom color';position:absolute;top:8px;left:0;font-size:10px;color:var(--muted)}
+.text-tool-floating .custom-text-color input[type=color]{width:32px;height:30px;border-radius:5px;padding:3px;cursor:pointer}
+.text-tool-floating input[type=color]::-webkit-color-swatch-wrapper{padding:0}.text-tool-floating input[type=color]::-webkit-color-swatch{border:0;border-radius:3px}
+.text-tool-floating .text-color-hex{width:100%;height:30px;border-radius:5px;padding:5px 7px;font:11px Inter,Arial,sans-serif;background:var(--bg)}
+.text-tool-floating [data-apply-text-color]{background:var(--hover);border:1px solid var(--line);height:30px;padding:4px 9px;font-size:11px}
+.text-tool-floating .text-color-reset{width:100%;margin-top:10px;text-align:left;font-size:11px;color:var(--muted)}
+.text-tool-floating.text-align-options{width:max-content;display:flex;gap:3px;padding:5px}.text-tool-floating.text-align-options button{width:32px;height:32px;padding:6px}
+.text-tool-floating button:focus-visible,.live-controls[data-rich-tools] :focus-visible{outline:1px solid var(--muted);outline-offset:1px}
+.node .node-content,.text-tool-floating,.search-results{scrollbar-width:thin;scrollbar-color:#7778 transparent;overscroll-behavior:contain}
+@supports selector(::-webkit-scrollbar){.node .node-content,.text-tool-floating,.search-results{scrollbar-width:auto;scrollbar-color:auto}.node .node-content::-webkit-scrollbar,.text-tool-floating::-webkit-scrollbar,.search-results::-webkit-scrollbar{width:6px;height:6px}.node .node-content::-webkit-scrollbar-track,.text-tool-floating::-webkit-scrollbar-track,.search-results::-webkit-scrollbar-track{background:transparent}.node .node-content::-webkit-scrollbar-thumb,.text-tool-floating::-webkit-scrollbar-thumb,.search-results::-webkit-scrollbar-thumb{background:#7778;border-radius:8px;border:1px solid transparent;background-clip:padding-box}.node .node-content::-webkit-scrollbar-button,.text-tool-floating::-webkit-scrollbar-button,.search-results::-webkit-scrollbar-button{display:none;width:0;height:0}}
+#boardSearch{width:284px;padding:8px;border-radius:8px;background:var(--panel);color:var(--ink)}
+.board-search-field{display:flex;align-items:center;gap:9px;padding:0 10px;height:36px;background:var(--bg);border:1px solid var(--line);border-radius:6px}
+.board-search-field svg{width:18px;height:18px;flex:none;fill:none;stroke:var(--muted);stroke-width:1.7;stroke-linecap:round}
+#boardSearch .board-search-field input{min-width:0;flex:1;height:34px;width:auto;border:0;padding:0;background:transparent;font:12px Inter,Arial,sans-serif;color:var(--ink);outline:none}
+.board-search-field:focus-within{border-color:var(--muted)}#boardSearch input::placeholder{color:var(--muted);opacity:1}
+#boardSearch .search-results:empty{display:none}
+.rich-note mark,.live-body mark,.node h2 mark,.rich-note [style*="background-color"],.live-body [style*="background-color"],.node h2 [style*="background-color"]{border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
