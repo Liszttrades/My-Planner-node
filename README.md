@@ -478,3 +478,7 @@ Text formatting is a single compact toolbar at the bottom center of the canvas, 
 
 ### v72 — Duplicate shortcut and formatted title renaming
 Ctrl+D (Cmd+D on macOS) duplicates the canvas selection using the same action as the card menu, preserving card content, rich titles, images, groups and internal connections with new IDs. It is inactive while typing or using the sidebar or a dialog. Note and description title renaming now opens the bottom text toolbar and retains the original title color/font/size when replacing selected title text. Enter commits; Escape restores the previous title.
+
+
+### v73 — Duplicate shortcut tooltip
+The Duplicate menu row shows its keyboard shortcut in the shared hover/focus tooltip rather than as inline text. Ctrl+D/Cmd+D behavior remains unchanged.
