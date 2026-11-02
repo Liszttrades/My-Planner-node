@@ -1,10 +1,11 @@
 /* Cache only this app's public shell. Board edits remain in IndexedDB. */
-const CACHE='forma-shell-v66';
-const SHELL=['./','index.html','style.css?v=66','app.js?v=66','collaboration.js?v=66','planning.js?v=66','sidebar.js?v=66','arrange.js?v=66','cloud-config.js?v=66','assets/InterVariable.woff2'];
+const CACHE='forma-shell-v67';
+const SHELL=['./','index.html','style.css?v=67','app.js?v=67','collaboration.js?v=67','planning.js?v=67','sidebar.js?v=67','arrange.js?v=67','text-tools.js?v=67','cloud-config.js?v=67','assets/InterVariable.woff2'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL))));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('forma-shell-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{
  const url=new URL(event.request.url),scope=new URL(self.registration.scope);
+ if(event.request.method==='GET'&&['https://fonts.googleapis.com','https://fonts.gstatic.com'].includes(url.origin)){event.respondWith((async()=>{const cache=await caches.open('forma-fonts-v1'),cached=await cache.match(event.request);if(cached)return cached;const response=await fetch(event.request);if(response.ok||response.type==='opaque')await cache.put(event.request,response.clone());return response})());return}
  if(event.request.method!=='GET'||url.origin!==scope.origin||!url.pathname.startsWith(scope.pathname))return;
  const relative=url.pathname.slice(scope.pathname.length),isShell=event.request.mode==='navigate'||SHELL.some(path=>path.split('?')[0]===relative);
  if(!isShell)return;

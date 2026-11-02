@@ -277,3 +277,46 @@ aside#sidebar{border-right:0}#canvas{border-left:0}#boards{flex:1;max-height:non
 #canvas.rotating-drawing,#canvas.rotating-drawing *{cursor:grabbing!important}
 @media(prefers-reduced-motion:reduce){.drawing-rotate-zone svg{transition:none}}
 #canvas.rotating-drawing .drawing-rotate-zone:not(.rotation-held) svg{opacity:0}
+/* Labels stay clean while edited; note typography is controlled within the text. */
+.card-label,.card-label:hover,.card-label[contenteditable]{text-decoration:none!important;border-bottom:0!important;text-transform:uppercase}
+.live-controls[data-rich-tools]{display:flex;flex-direction:column;align-items:stretch;gap:7px;padding:9px 12px}
+.text-tools-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.text-font-picker,.text-color-picker,.text-align-picker{position:relative;flex:none}
+.live-controls details summary{list-style:none;cursor:pointer;user-select:none}
+.live-controls details summary::-webkit-details-marker{display:none}
+.text-font-picker>summary{display:flex;align-items:center;justify-content:space-between;gap:10px;width:138px;min-height:30px;padding:5px 8px;border:1px solid color-mix(in srgb,var(--note-ink) 22%,transparent);border-radius:5px;color:var(--note-ink);font-size:12px}
+.text-font-name{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.text-size-control{display:flex;align-items:center;gap:2px}
+.text-size-control button{height:30px;min-width:27px;padding:3px;font-size:18px;color:var(--note-ink)}
+.text-size-control input{width:44px;height:30px;margin:0;padding:4px 2px;border:1px solid color-mix(in srgb,var(--note-ink) 30%,transparent);border-radius:5px;background:transparent;color:var(--note-ink);font-size:13px;text-align:center;appearance:textfield;-moz-appearance:textfield}
+.text-size-control input::-webkit-inner-spin-button,.text-size-control input::-webkit-outer-spin-button{appearance:none;margin:0}
+.live-controls[data-rich-tools] .live-actions{display:flex;gap:3px;flex-wrap:wrap;align-items:center}
+.live-controls[data-rich-tools] .live-actions>button{display:grid;place-items:center;width:31px;height:31px;min-width:31px;min-height:31px;padding:5px;font-size:17px}
+.live-controls[data-rich-tools] .live-actions>button>svg,.text-align-picker summary>svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.text-color-picker>summary{position:relative;display:grid;place-items:center;width:31px;height:31px;padding:3px;color:var(--note-ink);border-radius:5px}
+.text-color-letter{font-size:17px;font-weight:600;line-height:20px}
+.text-color-line{position:absolute;left:7px;right:7px;bottom:3px;height:3px;border-radius:1px;background:currentColor}.text-color-line.highlight{background:#fff0a8}.highlight-symbol{font-size:19px}
+.text-align-picker>summary{display:flex;align-items:center;justify-content:center;gap:3px;height:31px;padding:4px;color:var(--note-ink);border-radius:5px}
+.live-controls summary:hover{background:#8882}
+.text-tool-popover{position:absolute;left:0;bottom:calc(100% + 7px);z-index:55;width:224px;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);box-shadow:0 8px 28px #0003;font-size:12px}
+.text-tool-popover strong{display:block;font-size:12px;font-weight:600;margin-bottom:10px}
+.text-tool-popover.font-options{width:210px;max-height:240px;overflow:auto;scrollbar-width:thin;padding:5px}
+.live-controls .text-tool-popover button{height:auto;min-height:30px;font-size:12px;font-weight:400;color:var(--ink);background:transparent;border:0;box-shadow:none;padding:7px 8px}
+.live-controls .text-tool-popover button:hover,.live-controls .text-tool-popover button[aria-selected=true]{color:var(--ink);background:var(--hover)}
+.font-options button{display:block;width:100%;text-align:left}
+.text-color-swatches{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-bottom:12px}
+.live-controls .text-color-swatches button{height:24px;min-width:0;min-height:24px;padding:0;border:1px solid #8886;border-radius:50%;background:var(--swatch)}
+.live-controls .text-color-swatches button:hover{background:var(--swatch);outline:2px solid var(--ink);outline-offset:2px}
+.custom-text-color{display:flex;align-items:flex-end;gap:5px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:9px}
+.custom-text-color label{display:grid;gap:5px;margin:0;font-size:10px;color:var(--muted)}
+.custom-text-color input[type=color]{width:32px;height:29px;padding:2px;margin:0;border:1px solid var(--line);border-radius:4px;background:transparent}
+.custom-text-color .text-color-hex{width:77px;height:29px;margin:0;padding:4px;font-size:11px;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:4px}
+.live-controls .text-color-reset{width:100%;margin-top:7px;text-align:left;font-size:11px}
+.text-tool-popover.text-align-options{display:flex;gap:3px;width:max-content;padding:5px;left:auto;right:0}
+.text-align-options svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round}
+.rich-note ul,.rich-note ol,.live-body ul,.live-body ol{margin:6px 0;padding-left:1.5em;white-space:normal}
+.rich-note li,.live-body li{margin:3px 0;white-space:pre-wrap}
+.rich-note p,.rich-note div,.rich-note li,.live-body p,.live-body div,.live-body li{font-size:inherit;color:inherit;line-height:inherit}
+#addMenu [data-add=description] svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.live-controls details:not([open])>.text-tool-popover{display:none}
+.node.editing:has(.live-controls[data-rich-tools]){min-height:300px}
