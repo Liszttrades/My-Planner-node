@@ -536,3 +536,9 @@ body:not(.dark) .node.checklist-nodes .task input[data-checklist-row]:checked{ba
 #taskEditor .task-extra{margin:0 16px 14px;border-top:1px solid var(--line)}
 #taskEditor .task-extra summary{cursor:pointer;padding:10px 0 2px;font-size:12px;color:var(--muted)}
 #taskEditor .task-extra .productivity-fields{padding:10px 0 0}
+body:not(.dark) .node.checklist-nodes .task input[data-checklist-row],
+body:not(.dark) .node.checklist-nodes .task input[data-checklist-row]:checked{background:#202020;color:#f5f5f5;border-color:#a8a8a8}
+.node .handle .card-label{color:color-mix(in srgb,var(--note-ink) 65%,#888);font-weight:500;letter-spacing:.045em}
+#textFormattingDock .live-actions svg{width:18px;height:18px;stroke-width:1.8;stroke-linecap:square;stroke-linejoin:round}
+#textFormattingDock .live-actions>button,#textFormattingDock .live-actions summary{border-radius:5px}
+.text-tool-floating .text-color-swatches button[aria-pressed=true]{outline:1px solid var(--ink);outline-offset:2px;background:var(--swatch)}
