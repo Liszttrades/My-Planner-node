@@ -492,3 +492,10 @@ aside#sidebar{border-right:0}#canvas{border-left:0}#boards{flex:1;max-height:non
 
 .connecting .node.checklist input[data-checklist-row]{cursor:crosshair}
 .connecting .node.checklist input[data-checklist-row]:hover{outline:2px solid currentColor;outline-offset:3px}
+.node.checklist > .port{visibility:hidden}
+#cardMenu.drawing-menu [data-card-action="details"]{display:none!important}
+#checklistWires{position:absolute;left:0;top:0;width:1px;height:1px;overflow:visible;pointer-events:none;z-index:4}
+#checklistWires path{fill:none;stroke:#78a887;stroke-width:2;transition:opacity .24s ease}
+#checklistWires path.done{opacity:.32}
+#edges .edge.checklist-wire{opacity:0}
+@media(prefers-reduced-motion:reduce){#checklistWires path{transition:none}}
