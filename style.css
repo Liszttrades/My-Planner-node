@@ -498,3 +498,14 @@ aside#sidebar{border-right:0}#canvas{border-left:0}#boards{flex:1;max-height:non
 #checklistWires path.done{opacity:.32}
 #edges .edge.checklist-wire{opacity:0}
 @media(prefers-reduced-motion:reduce){#checklistWires path{transition:none}}
+.node.checklist-nodes{border-radius:8px;box-shadow:0 5px 16px #0004}
+.node.checklist-nodes .handle{height:34px;padding:0 12px;background:#275137;color:#fff;border-radius:7px 7px 0 0;border-bottom:1px solid #ffffff20}
+.node.checklist-nodes .handle .card-label{color:#fff;font-size:12px}
+.node.checklist-nodes > .port,.node.checklist-nodes .node-content h2{display:none}
+.node.checklist-nodes .card-title-row{position:absolute;right:43px;top:1px;z-index:6}
+.node.checklist-nodes .card-title-row .rename-title{opacity:1;color:white;margin:0;height:30px}
+.node.checklist-nodes .node-content{padding:10px 14px}
+.node.checklist-nodes .task{min-height:34px;gap:9px;margin:0;padding:4px 0}
+.node.checklist-nodes .task.socket-right{flex-direction:row-reverse;text-align:right}
+.node.checklist-nodes .task input[data-checklist-row]{flex-shrink:0;border-color:#78a887}
+#checklistWires{z-index:80}
