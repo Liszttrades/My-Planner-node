@@ -477,15 +477,18 @@ aside#sidebar{border-right:0}#canvas{border-left:0}#boards{flex:1;max-height:non
 .details-footer button,#saveTaskDetails{margin:0;padding:7px 13px;font-size:12px;border-radius:6px}
 .node-content a[href]{color:inherit;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere;cursor:pointer}
 .node.checklist .task{display:flex;align-items:center}
-.node.checklist .task .checklist-socket{flex:0 0 12px;width:12px;height:12px;padding:0;margin-left:auto;border-radius:50%;border:1px solid #78a887;background:#548866;cursor:crosshair}
-.node.checklist .task .checklist-socket:hover,.node.checklist .task .checklist-socket:focus-visible{background:#87bd97;box-shadow:0 0 0 4px #78a88740}
-.node.checklist .task.done .checklist-socket{background:#394d40}
+
+
+
 .edge.checklist-wire{stroke:#78a887;transition:opacity .24s ease}
 .edge.checklist-wire-done{opacity:.32}
 .node .handle,.node .node-content{transition:opacity .24s ease}
 .node.checklist-linked-done .handle,.node.checklist-linked-done .node-content{opacity:.46}
 @media(prefers-reduced-motion:reduce){.node .handle,.node .node-content,.edge.checklist-wire{transition:none}}
-.node.checklist .task .checklist-socket{opacity:0;transition:opacity .15s ease,background .15s ease}
-.node.checklist .task:hover .checklist-socket,.node.checklist .task:focus-within .checklist-socket,.connecting .node.checklist .checklist-socket{opacity:1}
+
+
 .edge.checklist-wire{stroke-dasharray:none}
-@media (hover:none){.node.checklist .task .checklist-socket{opacity:1}}
+
+
+.connecting .node.checklist input[data-checklist-row]{cursor:crosshair}
+.connecting .node.checklist input[data-checklist-row]:hover{outline:2px solid currentColor;outline-offset:3px}
