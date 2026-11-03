@@ -499,13 +499,20 @@ aside#sidebar{border-right:0}#canvas{border-left:0}#boards{flex:1;max-height:non
 #edges .edge.checklist-wire{opacity:0}
 @media(prefers-reduced-motion:reduce){#checklistWires path{transition:none}}
 .node.checklist-nodes{border-radius:8px;box-shadow:0 5px 16px #0004}
-.node.checklist-nodes .handle{height:34px;padding:0 12px;background:#275137;color:#fff;border-radius:7px 7px 0 0;border-bottom:1px solid #ffffff20}
-.node.checklist-nodes .handle .card-label{color:#fff;font-size:12px}
 .node.checklist-nodes > .port,.node.checklist-nodes .node-content h2{display:none}
 .node.checklist-nodes .card-title-row{position:absolute;right:43px;top:1px;z-index:6}
 .node.checklist-nodes .card-title-row .rename-title{opacity:1;color:white;margin:0;height:30px}
 .node.checklist-nodes .node-content{padding:10px 14px}
-.node.checklist-nodes .task{min-height:34px;gap:9px;margin:0;padding:4px 0}
 .node.checklist-nodes .task.socket-right{flex-direction:row-reverse;text-align:right}
-.node.checklist-nodes .task input[data-checklist-row]{flex-shrink:0;border-color:#78a887}
 #checklistWires{z-index:80}
+.node.checklist-nodes{height:auto!important;min-height:0!important}
+.node.checklist-nodes .node-content{height:auto!important;max-height:none!important;overflow:visible!important;flex:none;padding:10px 16px 12px}
+.node.checklist-nodes .card-title-row{top:8px}
+.node.checklist-nodes .card-title-row .rename-title{color:var(--note-ink)}
+.node.checklist-nodes .task{min-height:28px;gap:8px;margin:0;padding:3px 0}
+.node.checklist-nodes .task input[data-checklist-row]{flex:0 0 16px;width:16px;height:16px;margin:0;border-color:color-mix(in srgb,var(--note-ink) 55%,transparent);background:color-mix(in srgb,var(--note-ink) 5%,transparent);box-shadow:inset 0 0 0 2px var(--panel);transition:box-shadow .18s,border-color .18s,background .18s}
+.node.checklist-nodes .task input::after{width:4px;height:7px}
+.node.checklist-nodes .task.socket-linked input{border-color:var(--note-ink);box-shadow:inset 0 0 0 2px var(--panel),0 0 0 2px color-mix(in srgb,var(--note-ink) 15%,transparent)}
+.node.checklist-nodes .task.socket-linked input:not(:checked){animation:checklist-port-in .32s ease-out}
+@keyframes checklist-port-in{from{transform:scale(.75)}65%{transform:scale(1.16)}to{transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.node.checklist-nodes .task input{animation:none!important;transition:none!important}}
