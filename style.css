@@ -453,3 +453,26 @@ aside#sidebar{border-right:0}#canvas{border-left:0}#boards{flex:1;max-height:non
 @media(max-width:650px){#textFormattingDock.live-controls[data-rich-tools]{bottom:60px;width:336px;padding:8px}#textFormattingDock .live-actions{gap:3px}#textFormattingDock .live-actions>button,#textFormattingDock .text-color-picker>summary{width:30px;min-width:30px;height:30px;min-height:30px}}
 @media(prefers-reduced-motion:reduce){#textFormattingDock.live-controls[data-rich-tools]{animation:none}}
 #nextUpPanel{position:absolute;right:16px;top:64px;width:280px;max-height:65vh;overflow:auto;padding:12px;z-index:80;background:var(--panel);border:1px solid var(--line);border-radius:10px;scrollbar-width:thin}#nextUpPanel summary{cursor:pointer;font-size:13px;font-weight:600}#nextUpPanel h3{font-size:10px;text-transform:uppercase;color:var(--muted);margin:16px 0 6px}#nextUpPanel p{font-size:12px;color:var(--muted)}.next-task{display:flex;align-items:center;gap:5px;border-top:1px solid var(--line);padding:6px 0}.next-task button{padding:5px!important}.task-jump{flex:1;min-width:0;text-align:left}.task-jump b,.task-jump small{display:block;overflow:hidden;text-overflow:ellipsis}.task-jump b{font-size:12px}.task-jump small{font-size:10px;color:var(--muted);margin-top:4px}.productivity-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}.productivity-actions button,.productivity-actions a{font-size:12px;padding:5px 8px;border:1px solid #8885;border-radius:5px;color:inherit}.productivity-actions small{font-size:11px}#taskEditor{width:480px;max-width:95vw;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:20px}#taskEditor::backdrop{background:#0007}.productivity-heading{display:flex;align-items:center;justify-content:space-between}.productivity-heading h2{font-size:18px}.productivity-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.productivity-fields label{font-size:11px;color:var(--muted)}.productivity-fields input,.productivity-fields select{display:block;width:100%;margin-top:5px;padding:8px;border-radius:5px;background:var(--panel);color:var(--ink);border:1px solid var(--line);font-size:12px}#saveTaskDetails{margin-top:18px;padding:9px 14px;background:var(--ink);color:var(--panel)}[data-productivity-add] svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6}
+#arrangeCards,#openPlanning{display:none!important}
+#addMenu .card-search-field{margin:5px 4px 6px;border:1px solid var(--line);border-radius:7px;background:var(--panel)}
+#addMenu .card-search-field #nodeSearch{width:100%;height:33px;padding:5px 8px 5px 33px;border-radius:7px;font-size:12px;background:transparent}
+#addMenu .card-search-field #nodeSearch:focus{outline:0}
+#addMenu .card-search-field:focus-within{border-color:var(--muted)}
+#nextUpPanel{right:16px;top:68px;width:280px;padding:8px 11px}
+#nextUpPanel:not([open]){height:34px}
+#nextUpPanel summary{line-height:16px}
+#zoomMenu{bottom:60px}
+.text-tool-floating[data-color-panel]{padding:12px}
+.text-tool-floating .custom-color-editor{margin-block:13px}
+.text-tool-floating .text-color-reset{margin-top:12px}
+#taskEditor{width:410px;padding:0;max-height:85vh;overflow:auto;color-scheme:light}
+.dark #taskEditor{color-scheme:dark}
+#taskEditor .productivity-heading{padding:14px 16px;border-bottom:1px solid var(--line)}
+#taskEditor .productivity-heading small{color:var(--muted);font-size:11px}
+#taskEditor .productivity-heading h2{margin:4px 0 0;overflow-wrap:anywhere}
+#taskEditor .productivity-fields{padding:14px 16px;gap:10px 12px}
+#taskEditor .productivity-fields label{margin:0}
+#taskEditor .productivity-fields :is(input,select){height:34px;margin:4px 0 0;background:var(--hover)}
+.details-footer{display:flex;justify-content:flex-end;gap:8px;padding:10px 16px;border-top:1px solid var(--line)}
+.details-footer button,#saveTaskDetails{margin:0;padding:7px 13px;font-size:12px;border-radius:6px}
+.node-content a[href]{color:inherit;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere;cursor:pointer}
