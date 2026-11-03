@@ -516,3 +516,9 @@ aside#sidebar{border-right:0}#canvas{border-left:0}#boards{flex:1;max-height:non
 .node.checklist-nodes .task.socket-linked input:not(:checked){animation:checklist-port-in .32s ease-out}
 @keyframes checklist-port-in{from{transform:scale(.75)}65%{transform:scale(1.16)}to{transform:scale(1)}}
 @media(prefers-reduced-motion:reduce){.node.checklist-nodes .task input{animation:none!important;transition:none!important}}
+
+/* Align each checklist socket with its row and straddle the card border. */
+.node.checklist-nodes{overflow:visible}
+.node.checklist-nodes .task{position:relative}
+.node.checklist-nodes .task input[data-checklist-row]{position:absolute;top:0;bottom:0;left:-28px;right:auto;width:22px;height:22px;margin:auto 0;border-width:2px;background:var(--panel)}
+.node.checklist-nodes .task.socket-right input[data-checklist-row]{left:auto;right:-28px}
