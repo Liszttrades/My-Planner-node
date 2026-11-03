@@ -522,3 +522,17 @@ aside#sidebar{border-right:0}#canvas{border-left:0}#boards{flex:1;max-height:non
 .node.checklist-nodes .task{position:relative}
 .node.checklist-nodes .task input[data-checklist-row]{position:absolute;top:0;bottom:0;left:-28px;right:auto;width:22px;height:22px;margin:auto 0;border-width:2px;background:var(--panel)}
 .node.checklist-nodes .task.socket-right input[data-checklist-row]{left:auto;right:-28px}
+
+/* Socket contrast follows the canvas surface even on dark-colored cards. */
+.node.checklist-nodes .task input[data-checklist-row],
+.node.checklist-nodes .task.socket-linked input[data-checklist-row]{color:var(--ink);border-color:var(--muted);box-shadow:0 0 0 2px var(--bg)}
+.node.checklist-nodes .task input[data-checklist-row]:checked{border-color:var(--ink)}
+body:not(.dark) .node.checklist-nodes .task input[data-checklist-row]{color:#26372d;border-color:#52695a}
+body:not(.dark) .node.checklist-nodes .task input[data-checklist-row]:checked{background:#dce9df}
+#addMenu .card-search-field,#boardSearch .board-search-field{display:flex;align-items:center;gap:9px;padding:0 10px;height:36px;background:var(--bg);border:1px solid var(--line);border-radius:6px}
+#addMenu .card-search-field svg,#boardSearch .board-search-field svg{position:static;width:18px;height:18px;flex:none}
+#addMenu .card-search-field #nodeSearch,#boardSearch .board-search-field input{flex:1;min-width:0;width:auto;height:34px;padding:0;margin:0;border:0;background:transparent;font:12px Inter,Arial,sans-serif}
+#addMenu .card-search-field:focus-within,#boardSearch .board-search-field:focus-within{border-color:var(--muted)}
+#taskEditor .task-extra{margin:0 16px 14px;border-top:1px solid var(--line)}
+#taskEditor .task-extra summary{cursor:pointer;padding:10px 0 2px;font-size:12px;color:var(--muted)}
+#taskEditor .task-extra .productivity-fields{padding:10px 0 0}
