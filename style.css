@@ -541,3 +541,13 @@ body:not(.dark) .node.checklist-nodes .task input[data-checklist-row]:checked{ba
 #textFormattingDock .live-actions svg{width:18px;height:18px;stroke-width:1.8;stroke-linecap:square;stroke-linejoin:round}
 #textFormattingDock .live-actions>button,#textFormattingDock .live-actions summary{border-radius:5px}
 .text-tool-floating .text-color-swatches button[aria-pressed=true]{outline:1px solid var(--ink);outline-offset:2px;background:var(--swatch)}
+
+
+/* Midpoint handles change card width without competing with the wire ports. */
+.node .width-resize{top:50%;transform:translateY(-50%);cursor:ew-resize;touch-action:none}
+.node .width-w{left:-6px}
+.node .width-e{right:-6px}
+.node .width-resize::before{inset:-7px -4px}
+.node.checklist-nodes .width-w{left:15px}
+.node.checklist-nodes .width-e{right:15px}
+.node:not(.selected) .width-resize,.connecting .node .width-resize,.pen-mode .node .width-resize,.erase-mode .node .width-resize{display:none}
