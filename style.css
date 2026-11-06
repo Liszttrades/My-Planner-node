@@ -502,11 +502,10 @@ aside#sidebar{border-right:0}#canvas{border-left:0}#boards{flex:1;max-height:non
 .node.checklist-nodes > .port,.node.checklist-nodes .node-content h2{display:none}
 .node.checklist-nodes .card-title-row{position:absolute;right:43px;top:1px;z-index:6}
 .node.checklist-nodes .card-title-row .rename-title{opacity:1;color:white;margin:0;height:30px}
-.node.checklist-nodes .node-content{padding:10px 14px}
 .node.checklist-nodes .task.socket-right{flex-direction:row-reverse;text-align:right}
 #checklistWires{z-index:80}
 .node.checklist-nodes{height:auto!important;min-height:0!important}
-.node.checklist-nodes .node-content{height:auto!important;max-height:none!important;overflow:visible!important;flex:none;padding:10px 16px 12px}
+.node.checklist-nodes .node-content{height:auto!important;min-height:0;max-height:none!important;overflow:visible!important;flex:none;padding:10px 16px 12px}
 .node.checklist-nodes .card-title-row{top:8px}
 .node.checklist-nodes .card-title-row .rename-title{color:var(--note-ink)}
 .node.checklist-nodes .task{min-height:28px;gap:8px;margin:0;padding:3px 0}
