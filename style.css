@@ -551,3 +551,11 @@ body:not(.dark) .node.checklist-nodes .task input[data-checklist-row]:checked{ba
 .node.checklist-nodes .width-w{left:15px}
 .node.checklist-nodes .width-e{right:15px}
 .node:not(.selected) .width-resize,.connecting .node .width-resize,.pen-mode .node .width-resize,.erase-mode .node .width-resize{display:none}
+
+/* Lightweight collaborators and recent activity on shared boards. */
+#formaLiveBar{position:absolute;top:98px;right:12px;z-index:86;width:min(240px,calc(100% - 82px));color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:7px;font-size:12px}
+#formaLiveBar>summary{cursor:pointer;padding:7px 10px;font-weight:600}
+.live-board-panel{display:grid;gap:7px;padding:4px 10px 10px;max-height:40vh;overflow:auto}
+.live-board-panel>strong{font-size:11px;font-weight:600;padding-top:4px;border-top:1px solid var(--line)}
+.live-board-line{overflow-wrap:anywhere;border-left:2px solid var(--live-color,var(--line));padding-left:7px}
+.node>.live-card-badge{position:absolute;bottom:calc(100% + 6px);left:8px;max-width:calc(100% - 16px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;z-index:7;pointer-events:none;padding:3px 7px;background:#202124;color:#f5f5f5;border:1px solid var(--live-color);border-radius:5px;font-size:12px;font-weight:600}
