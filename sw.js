@@ -1,6 +1,6 @@
 /* Cache only this app's public shell. Board edits remain in IndexedDB. */
-const CACHE='forma-shell-v90';
-const SHELL=['./','productivity.js?v=90','index.html','style.css?v=90','app.js?v=90','collaboration.js?v=90','planning.js?v=90','sidebar.js?v=90','arrange.js?v=90','text-tools.js?v=90','assets/InterVariable.woff2'];
+const CACHE='forma-shell-v91';
+const SHELL=['./','account.js?v=91','productivity.js?v=91','index.html','style.css?v=91','app.js?v=91','collaboration.js?v=91','planning.js?v=91','sidebar.js?v=91','arrange.js?v=91','text-tools.js?v=91','assets/InterVariable.woff2'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL))));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('forma-shell-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{
